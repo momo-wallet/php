@@ -49,7 +49,7 @@ class QRNotify extends Process
             $jsonArr = json_decode($rawPostData, true);
             $qrNotificationRequest = new QRNotificationRequest($jsonArr);
             
-            if (RequestType::TRANS_TYPE_MOMO_WALLET != $ipn->getOrderType()) {
+            if (RequestType::TRANS_TYPE_MOMO_WALLET != $ipn->getTransType()) {
                 throw new MoMoException("Wrong Order Type - Please contact MoMo");
             }
             if ($this->getPartnerInfo()->getPartnerCode() != $ipn->getPartnerCode()) {
