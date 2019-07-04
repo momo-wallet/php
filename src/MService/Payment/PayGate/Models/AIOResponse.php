@@ -11,7 +11,7 @@ class AIOResponse extends AIORequest
     private $transId;
     private $orderType;
     private $payType;
-    private $responseDate;
+    private $responseTime;
 
     public function __construct(array $params = array())
     {
@@ -130,18 +130,17 @@ class AIOResponse extends AIORequest
     /**
      * @return mixed
      */
-    public function getResponseDate()
+    public function getResponseTime()
     {
-        return $this->responseDate;
+        return $this->responseTime;
     }
 
     /**
-     * @param mixed $responseDate
+     * @param mixed $responseTime
      */
-    public function setResponseDate($responseDate): void
+    public function setResponseTime($responseTime): void
     {
-        $this->responseDate = $responseDate;
+        $this->responseTime = $responseTime;
     }
-
 
 }

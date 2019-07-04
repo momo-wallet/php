@@ -8,7 +8,7 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use PHPUnit\Framework\TestCase;
 
-include_once "../../loader.php";
+include_once "../../../../../loader.php";
 
 class PayATMTest extends TestCase
 {

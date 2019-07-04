@@ -7,7 +7,7 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use PHPUnit\Framework\TestCase;
 
-include_once "../../loader.php";
+include_once "../../../../../loader.php";
 
 class QRNotifyTest extends TestCase
 {
@@ -72,26 +72,6 @@ class QRNotifyTest extends TestCase
         $this->assertEquals('momo_wallet', $request->getTransType(), "Wrong TransType data when creating QRNotificationRequest");
         $this->assertEquals('B001221', $request->getPartnerRefId(), "Wrong partnerRefId data when creating QRNotificationRequest");
 
-    }
-
-    public function testProcess()
-    {
-        $data = "{
-  \"partnerCode\": \"MOMOIQA420180417\",
-  \"accessKey\": \"TNWFx9JWayevKPiB8LyTgODiCSrjstXN\",
-  \"amount\": 10000,
-  \"partnerRefId\": \"B001221\",
-  \"partnerTransId\": \"\",
-  \"transType\": \"momo_wallet\",
-  \"momoTransId\": \"43121679\",
-  \"status\": 0,
-  \"message\": \"Thành Công\",
-  \"responseTime\": 1555472829549,
-  \"signature\": \"3ec88652f5d86997780a6adf1545c2617ca9e39be66f94937cb6187ebd66d1b4\",
-  \"storeId\": \"store001\"
-}";
-        QRNotify::process(Environment::selectEnv('dev'), $data);
-        $this->assertEquals(0, 0);
     }
 
 }

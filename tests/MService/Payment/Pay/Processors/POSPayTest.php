@@ -2,7 +2,7 @@
 
 namespace MService\Payment\Pay\Processors;
 
-include_once "../../loader.php";
+include_once "../../../../../loader.php";
 
 use MService\Payment\Pay\Models\MoMoJson;
 use MService\Payment\Pay\Models\POSPayRequest;
@@ -52,7 +52,6 @@ PfPrNwIDAQAB
         $this->assertArrayHasKey('hash', $arr, "Missing hash Attribute in createPOSPayRequest");
         $this->assertArrayHasKey('version', $arr, "Missing version Attribute in createPOSPayRequest");
         $this->assertArrayHasKey('payType', $arr, "Missing payType Attribute in createPOSPayRequest");
-
     }
 
     public function testProcess()
