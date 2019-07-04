@@ -1,0 +1,48 @@
+<?php
+
+
+namespace MService\Payment\PayGate\Models;
+
+use MService\Payment\Shared\Constants\RequestType;
+
+class RefundATMResponse extends RefundMoMoResponse
+{
+    private $bankCode;
+
+    public function __construct(array $params = array())
+    {
+        parent::__construct($params);
+        $vars = get_object_vars($this);
+
+        foreach ($vars as $key => $value) {
+            if (array_key_exists($key, $params)) {
+                $this->{$key} = $params[$key];
+            }
+        }
+
+        $this->setRequestType(RequestType::REFUND_ATM);
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+        return array_merge($vars, parent::jsonSerialize());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBankCode()
+    {
+        return $this->bankCode;
+    }
+
+    /**
+     * @param mixed $bankCode
+     */
+    public function setBankCode($bankCode): void
+    {
+        $this->bankCode = $bankCode;
+    }
+
+}
