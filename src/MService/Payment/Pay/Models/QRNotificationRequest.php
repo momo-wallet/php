@@ -3,9 +3,11 @@
 
 namespace MService\Payment\Pay\Models;
 
-class QRNotificationRequest extends QRNotificationResponse
+class QRNotificationRequest extends PayResponse
 {
-
+    private $partnerRefId;
+    private $momoTransId;
+    private $amount;
     private $partnerCode;
     private $accessKey;
     private $partnerTransId;
@@ -23,6 +25,54 @@ class QRNotificationRequest extends QRNotificationResponse
                 $this->{$key} = $params[$key];
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartnerRefId()
+    {
+        return $this->partnerRefId;
+    }
+
+    /**
+     * @param mixed $partnerRefId
+     */
+    public function setPartnerRefId($partnerRefId): void
+    {
+        $this->partnerRefId = $partnerRefId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMomoTransId()
+    {
+        return $this->momoTransId;
+    }
+
+    /**
+     * @param mixed $momoTransId
+     */
+    public function setMomoTransId($momoTransId): void
+    {
+        $this->momoTransId = $momoTransId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param mixed $amount
+     */
+    public function setAmount($amount): void
+    {
+        $this->amount = $amount;
     }
 
     public function jsonSerialize()

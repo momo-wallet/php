@@ -9,7 +9,6 @@ use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\Process;
 use MService\Payment\Shared\Utils\Encoder;
-use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
 
 class CaptureIPN extends Process
@@ -29,11 +28,10 @@ class CaptureIPN extends Process
             if (is_null($captureIPNRequest)) {
                 throw new MoMoException('MoMo POST Request for Capture MoMo IPN is invalid');
             }
-
-            $captureIPNResponse = $captureIPN->execute($captureIPNRequest);
+            $payload = $captureIPN->execute($captureIPNRequest);
             echo '========================== END CAPTURE MOMO IPN PROCESS ==================', "\n";
 
-            return $captureIPNResponse;
+            return $payload;
 
         } catch (MoMoException $exception) {
             echo $exception->getErrorMessage();
@@ -98,7 +96,7 @@ class CaptureIPN extends Process
         return null;
     }
 
-    public function execute(CaptureIPNRequest $captureIPNRequest)
+    public function execute(CaptureIPNRequest $captureIPNRequest): string
     {
         try {
             //check signature
@@ -127,20 +125,13 @@ class CaptureIPN extends Process
                 Parameter::SIGNATURE => $captureIPNRequest->getSignature(),
             );
 
-            $captureIPNResponse = new CaptureIPNRequest($arr);
-            $data = json_encode($captureIPNResponse);
-
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_GATE_URI, $data);
-
-            if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
-            }
-            return $captureIPNResponse;
+            $payload = json_encode($arr);
+            return $payload;
 
         } catch (MoMoException $e) {
             echo $e->getErrorMessage();
         }
-        return null;
+        return '';
     }
 
 }

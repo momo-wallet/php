@@ -29,10 +29,10 @@ class QRNotify extends Process
             if (is_null($qrNotificationRequest)) {
                 throw new MoMoException('MoMo POST Request for QR Notification Payment is invalid');
             }
-            $qrNotificationResponse = $qrNotify->execute($qrNotificationRequest);
+            $payload = $qrNotify->execute($qrNotificationRequest);
             echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
 
-            return $qrNotificationResponse;
+            return $payload;
 
         } catch (MoMoException $exception) {
             echo $exception->getErrorMessage();
@@ -83,7 +83,7 @@ class QRNotify extends Process
         return null;
     }
 
-    public function execute(QRNotificationRequest $qrNotificationRequest)
+    public function execute(QRNotificationRequest $qrNotificationRequest) : string
     {
         try {
             //check signature
@@ -106,21 +106,14 @@ class QRNotify extends Process
                 Parameter::SIGNATURE => $signature
             );
 
-            $qrNotificationResponse = new QRNotificationResponse($arr);
-            $data = json_encode($qrNotificationResponse);
-
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_QR_CODE_URI, $data);
-
-            if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
-            }
-            return $qrNotificationResponse;
+            $payload = json_encode($arr);
+            return $payload;
 
         } catch (MoMoException $e) {
             echo $e->getErrorMessage();
         }
 
-        return null;
+        return '';
     }
 
 }

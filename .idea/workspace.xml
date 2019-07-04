@@ -2,30 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57725b12-2608-4b63-be74-8eb6a3e25f1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureIPNRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureIPNResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIOResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIOResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/PaymentConfirmationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/PaymentConfirmationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationResponse.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundStatusTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundStatusTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,67 +25,70 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php">
+        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+            <state relative-caret-position="277">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/PaymentConfirmationTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="408">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
               <folding>
-                <element signature="e#45#96#0#PHP" expanded="true" />
+                <element signature="e#51#105#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="315">
+              <caret line="29" column="37" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="1110">
+              <caret line="85" column="82" selection-start-line="85" selection-start-column="82" selection-end-line="85" selection-end-column="82" />
+              <folding>
+                <element signature="e#52#106#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="408">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="e#55#109#0#PHP" expanded="true" />
               </folding>
@@ -113,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="50" column="13" lean-forward="true" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+            <state relative-caret-position="363">
+              <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
               <folding>
                 <element signature="e#56#110#0#PHP" expanded="true" />
               </folding>
@@ -135,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -191,9 +177,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationResponse.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/PaymentConfirmationResponse.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/loader.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" />
@@ -226,7 +210,6 @@
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoRequest.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIOResponse.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/MService/Payment/PayGate/Processors/CaptureIPNTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" />
@@ -240,8 +223,11 @@
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" />
       </list>
     </option>
   </component>
@@ -302,7 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -397,6 +382,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,34 +430,34 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.QRNotifyTest.testProcess">
-    <configuration name="CaptureIPNTest.testMoMoRequestCorrect" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\CaptureIPNTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" method="testMoMoRequestCorrect" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.RefundStatusTest">
+    <configuration name="PayATMTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\PayGate\Processors\PayATMTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="CaptureIPNTest.testMoMoRequestWrong" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\CaptureIPNTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" method="testMoMoRequestWrong" scope="Method" />
+    <configuration name="QueryStatusTransactionTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\PayGate\Processors\QueryStatusTransactionTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="CaptureIPNTest.test__construct" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\CaptureIPNTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" method="test__construct" scope="Method" />
+    <configuration name="RefundATMTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\PayGate\Processors\RefundATMTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="QRNotifyTest.testProcess" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\Pay\Processors\QRNotifyTest" file="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" method="testProcess" scope="Method" />
+    <configuration name="RefundMoMoTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\PayGate\Processors\RefundMoMoTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="TransactionRefundTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\Pay\Processors\TransactionRefundTest" file="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" scope="Class" />
+    <configuration name="RefundStatusTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\PayGate\Processors\RefundStatusTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundStatusTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.QRNotifyTest.testProcess" />
-        <item itemvalue="PHPUnit.CaptureIPNTest.testMoMoRequestWrong" />
-        <item itemvalue="PHPUnit.CaptureIPNTest.testMoMoRequestCorrect" />
-        <item itemvalue="PHPUnit.CaptureIPNTest.test__construct" />
-        <item itemvalue="PHPUnit.TransactionRefundTest" />
+        <item itemvalue="PHPUnit.RefundStatusTest" />
+        <item itemvalue="PHPUnit.RefundMoMoTest" />
+        <item itemvalue="PHPUnit.RefundATMTest" />
+        <item itemvalue="PHPUnit.QueryStatusTransactionTest" />
+        <item itemvalue="PHPUnit.PayATMTest" />
       </list>
     </recent_temporary>
   </component>
@@ -495,50 +481,51 @@
       <workItem from="1562228089529" duration="364000" />
       <workItem from="1562228467010" duration="925000" />
       <workItem from="1562231446803" duration="172000" />
-      <workItem from="1562232510072" duration="3938000" />
+      <workItem from="1562232510072" duration="4028000" />
+      <workItem from="1562237179166" duration="1723000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="POSPayTest - 2019.07.04 at 17h 24m 02s.xml">
-      <configuration name="POSPayTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="QRNotifyTest_testProcess - 2019.07.04 at 18h 04m 35s.xml">
+      <configuration name="QRNotifyTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="QRNotifyTest - 2019.07.04 at 17h 24m 06s.xml">
-      <configuration name="QRNotifyTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="QRNotifyTest_testProcess - 2019.07.04 at 18h 06m 16s.xml">
+      <configuration name="QRNotifyTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TransactionQueryTest - 2019.07.04 at 17h 24m 12s.xml">
-      <configuration name="TransactionQueryTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="QRNotifyTest_testProcess - 2019.07.04 at 18h 08m 22s.xml">
+      <configuration name="QRNotifyTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TransactionRefundTest - 2019.07.04 at 17h 24m 17s.xml">
-      <configuration name="TransactionRefundTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 12m 25s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="CaptureIPNTest_test__construct - 2019.07.04 at 17h 24m 56s.xml">
-      <configuration name="CaptureIPNTest.test__construct" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CaptureIPNTest_testMoMoRequestCorrect - 2019.07.04 at 17h 26m 42s.xml">
-      <configuration name="CaptureIPNTest.testMoMoRequestCorrect" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CaptureIPNTest_testMoMoRequestCorrect - 2019.07.04 at 17h 29m 06s.xml">
-      <configuration name="CaptureIPNTest.testMoMoRequestCorrect" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CaptureIPNTest_testMoMoRequestCorrect - 2019.07.04 at 17h 29m 36s.xml">
-      <configuration name="CaptureIPNTest.testMoMoRequestCorrect" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CaptureIPNTest_testMoMoRequestWrong - 2019.07.04 at 17h 29m 48s.xml">
+    <history-entry file="CaptureIPNTest_testMoMoRequestWrong - 2019.07.04 at 18h 13m 54s.xml">
       <configuration name="CaptureIPNTest.testMoMoRequestWrong" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="QRNotifyTest_testProcess - 2019.07.04 at 17h 30m 32s.xml">
-      <configuration name="QRNotifyTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 14m 20s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 15m 06s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 17m 05s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 17m 33s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CaptureIPNTest_testProcess - 2019.07.04 at 18h 17m 42s.xml">
+      <configuration name="CaptureIPNTest.testProcess" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39200000" />
+    <option name="totallyTimeSpent" value="41013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="294" y="23" width="1626" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24873738" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25189394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -551,7 +538,7 @@
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32918552" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.317757" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.16471963" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -577,20 +564,6 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundStatusResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -605,13 +578,6 @@
           <folding>
             <element signature="e#56#110#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -738,30 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoIPNRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1336">
-          <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
-          <folding>
-            <element signature="e#52#106#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoIPNRequest.php" />
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/PartnerInfo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -859,6 +802,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -873,6 +823,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding>
+            <element signature="e#45#96#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -880,60 +840,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationResponse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="446">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="33" column="26" lean-forward="true" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="315">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="85" column="82" selection-start-line="85" selection-start-column="82" selection-end-line="85" selection-end-column="82" />
           <folding>
-            <element signature="e#45#96#0#PHP" expanded="true" />
+            <element signature="e#52#106#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="50" column="13" lean-forward="true" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        <state relative-caret-position="363">
+          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding>
             <element signature="e#56#110#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="408">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="e#55#109#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="e#51#105#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -73,5 +73,4 @@ class QRNotifyTest extends TestCase
         $this->assertEquals('B001221', $request->getPartnerRefId(), "Wrong partnerRefId data when creating QRNotificationRequest");
 
     }
-
 }
