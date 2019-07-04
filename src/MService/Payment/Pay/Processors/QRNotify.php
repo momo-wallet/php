@@ -19,45 +19,59 @@ class QRNotify extends Process
         parent::__construct($environment);
     }
 
-    public static function process(Environment $env, string $data)
+    public static function process(Environment $env, string $rawPostData)
     {
-        try {
-            echo '========================== START QR NOTIFICATION PROCESS ==================', "\n";
-            $qrNotify = new QRNotify($env);
-            $qrNotificationRequest = $qrNotify->getQRNotificationFromMoMo($data);
+        echo '========================== START QR NOTIFICATION PROCESS ==================', "\n";
+        $qrNotify = new QRNotify($env);
+        $qrNotificationRequest = $qrNotify->getQRNotificationFromMoMo($rawPostData);
 
-            if (is_null($qrNotificationRequest)) {
-                throw new MoMoException('MoMo POST Request for QR Notification Payment is invalid');
-            }
+        header("Content-Type: application/json");
+
+        if (is_null($qrNotificationRequest)) {
+            http_response_code(400);
+            header($_SERVER["SERVER_PROTOCOL"]. ' 400 Bad Request');
+            $payload = json_encode(array("message"=>"Bad Request"));
+
+        } else {
+            http_response_code(200);
+            header($_SERVER["SERVER_PROTOCOL"]. ' 200 OK');
             $payload = $qrNotify->execute($qrNotificationRequest);
-            echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
-
-            return $payload;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
         }
+
+        echo $payload, "\n";
+        echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
+        return $payload;
     }
 
-    public function getQRNotificationFromMoMo(string $data)
+    public function getQRNotificationFromMoMo(string $rawPostData)
     {
         try {
-            $jsonArr = json_decode($data, true);
+            $jsonArr = json_decode($rawPostData, true);
             $qrNotificationRequest = new QRNotificationRequest($jsonArr);
+            
+            if (RequestType::TRANS_TYPE_MOMO_WALLET != $ipn->getOrderType()) {
+                throw new MoMoException("Wrong Order Type - Please contact MoMo");
+            }
+            if ($this->getPartnerInfo()->getPartnerCode() != $ipn->getPartnerCode()) {
+                throw new MoMoException("Wrong PartnerCode - Please contact MoMo");
+            }
+            if ($this->getPartnerInfo()->getAccessKey() != $ipn->getAccessKey()) {
+                throw new MoMoException("Wrong AccessKey - Please contact MoMo");
+            }            
 
-            $rawData = Parameter::ACCESS_KEY . "=" . $qrNotificationRequest->getAccessKey() .
-                "&" . Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
-                "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
-                "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
-                "&" . Parameter::PARTNER_CODE . "=" . $qrNotificationRequest->getPartnerCode() .
-                "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
-                "&" . Parameter::PARTNER_TRANS_ID . "=" . $qrNotificationRequest->getPartnerTransId() .
-                "&" . Parameter::DATE . "=" . $qrNotificationRequest->getResponseTime() .
-                "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus() .
-                "&" . Parameter::STORE_ID . "=" . $qrNotificationRequest->getStoreId() .
-                "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
+            $rawHash = Parameter::ACCESS_KEY . "=" . $qrNotificationRequest->getAccessKey() .
+                        "&" . Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
+                        "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
+                        "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
+                        "&" . Parameter::PARTNER_CODE . "=" . $qrNotificationRequest->getPartnerCode() .
+                        "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
+                        "&" . Parameter::PARTNER_TRANS_ID . "=" . $qrNotificationRequest->getPartnerTransId() .
+                        "&" . Parameter::DATE . "=" . $qrNotificationRequest->getResponseTime() .
+                        "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus() .
+                        "&" . Parameter::STORE_ID . "=" . $qrNotificationRequest->getStoreId() .
+                        "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
 
-            echo 'getQRNotificationFromMoMo::rawDataBeforeHash::', $rawData, "\n";
+            echo 'getQRNotificationFromMoMo::rawDataBeforeHash::', $rawHash, "\n";
             $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
             echo 'getQRNotificationFromMoMo::signature::' . $signature, "\n";
             echo 'getQRNotificationFromMoMo::MoMoSignature::' . $qrNotificationRequest->getSignature(), "\n";
@@ -85,35 +99,28 @@ class QRNotify extends Process
 
     public function execute(QRNotificationRequest $qrNotificationRequest) : string
     {
-        try {
-            //check signature
-            $rawHash = Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
-                "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
-                "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
-                "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
-                "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus();
+        //create signature
+        $rawHash = Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
+                    "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
+                    "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
+                    "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
+                    "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus();
 
-            echo "sendQRNotificationResponseToMoMoServer::partnerRawDataBeforeHash::" . $rawHash . "\n";
-            $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "sendQRNotificationResponseToMoMoServer::partnerSignature::" . $signature . "\n";
+        echo "sendQRNotificationResponseToMoMoServer::partnerRawDataBeforeHash::" . $rawHash . "\n";
+        $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
+        echo "sendQRNotificationResponseToMoMoServer::partnerSignature::" . $signature . "\n";
 
-            $arr = array(
-                Parameter::STATUS => $qrNotificationRequest->getStatus(),
-                Parameter::MESSAGE => $qrNotificationRequest->getMessage(),
-                Parameter::PARTNER_REF_ID => $qrNotificationRequest->getPartnerRefId(),
-                Parameter::MOMO_TRANS_ID => $qrNotificationRequest->getMomoTransId(),
-                Parameter::AMOUNT => $qrNotificationRequest->getAmount(),
-                Parameter::SIGNATURE => $signature
-            );
+        $arr = array(
+                        Parameter::STATUS => $qrNotificationRequest->getStatus(),
+                        Parameter::MESSAGE => $qrNotificationRequest->getMessage(),
+                        Parameter::PARTNER_REF_ID => $qrNotificationRequest->getPartnerRefId(),
+                        Parameter::MOMO_TRANS_ID => $qrNotificationRequest->getMomoTransId(),
+                        Parameter::AMOUNT => $qrNotificationRequest->getAmount(),
+                        Parameter::SIGNATURE => $signature
+                    );
 
-            $payload = json_encode($arr);
-            return $payload;
-
-        } catch (MoMoException $e) {
-            echo $e->getErrorMessage();
-        }
-
-        return '';
+        $payload = json_encode($arr);
+        return $payload;
     }
 
 }
