@@ -17,11 +17,11 @@ class CaptureIPN extends Process
         parent::__construct($environment);
     }
 
-    public static function process(Environment $env, string $data)
+    public static function process(Environment $env, string $rawPostData)
     {
         echo '========================== START CAPTURE MOMO IPN PROCESS ==================', "\n";
         $captureIPN = new CaptureIPN($env);
-        $captureIPNRequest = $captureIPN->getIPNInformationFromMoMo($data);
+        $captureIPNRequest = $captureIPN->getIPNInformationFromMoMo($rawPostData);
         
         header("Content-Type: application/json;charset=UTF-8");
 
@@ -42,10 +42,10 @@ class CaptureIPN extends Process
         return $payload;
     }
 
-    public function getIPNInformationFromMoMo(string $data)
+    public function getIPNInformationFromMoMo(string $rawPostData)
     {
         try {
-            parse_str($data, $result);
+            parse_str($rawPostData, $result);
             $ipn = new CaptureIPNRequest($result);
 
             if (RequestType::TRANS_TYPE_MOMO_WALLET != $ipn->getOrderType()) {
