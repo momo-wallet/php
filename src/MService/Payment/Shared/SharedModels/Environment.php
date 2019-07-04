@@ -28,11 +28,11 @@ class Environment
     {
         switch ($target) {
             case "dev":
-                $devInfo = new PartnerInfo("MOMOLRJZ20181206", "mTCKt9W3eU1m39TW", "KqBEecvaJf1nULnhPF5htpG3AMtDIOlD");
+                $devInfo = new PartnerInfo("mTCKt9W3eU1m39TW", "MOMOLRJZ20181206", "KqBEecvaJf1nULnhPF5htpG3AMtDIOlD");
                 $dev = new Environment("https://test-payment.momo.vn", $devInfo, "development");
                 return $dev;
             case "prod":
-                $productionInfo = new PartnerInfo("MOMO", "F8BBA842ECF85", "K951B6PE1waDMi640xX08PD3vg6EkVlz");
+                $productionInfo = new PartnerInfo("F8BBA842ECF85", "MOMO", "K951B6PE1waDMi640xX08PD3vg6EkVlz");
                 $production = new Environment("https://payment.momo.vn", $productionInfo, "production");
                 return $production;
             default:

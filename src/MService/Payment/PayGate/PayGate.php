@@ -21,7 +21,7 @@ $orderId = time() . "";
 $requestId = time() . "";
 
 //CaptureMoMo::process($env, $orderId, "Pay With MoMo", "35000", "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
-//QueryStatusTransaction::process($env, '1561972963', '1561972963');
+QueryStatusTransaction::process(Environment::selectEnv('dev'), '1561972963', '1561972963');
 //
 //$orderId = (time() + (7 * 24 * 60 * 60))."";
 //$requestId = (time() + (7 * 24 * 60 * 60))."";
@@ -35,6 +35,3 @@ $requestId = time() . "";
 //$orderId = (time() + (10 * 24 * 60 * 60))."";
 //RefundMoMo::process($env, $orderId, '1561972963', '7000', '2304963974');
 //RefundStatus::process($env, '1561972963', '1561972963');
-
-$env = Environment::selectEnv('dev');
-HttpClient::HTTPPost($env->getMomoEndpoint(), "/gw_payment/transactionProcessor", "{\"partnerCode\":\"MOMOLRJZ20181206\",\"orderId\":\"1562228609\",\"orderInfo\":\"Pay With MoMo\",\"accessKey\":\"mTCKt9W3eU1m39TW\",\"amount\":\"35000\",\"signature\":\"a19946aea4ffaf25f405d9640e96345b9fa5674732de775f9461b2a0ab5e46d2\",\"extraData\":\"sjygdvi\",\"requestId\":\"1562228609\",\"notifyUrl\":\"https:\/\/google.com.vn\",\"returnUrl\":\"https:\/\/google.com.vn\",\"requestType\":\"captureMoMoWallet\"}");
