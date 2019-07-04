@@ -22,14 +22,17 @@ class CaptureIPN extends Process
         echo '========================== START CAPTURE MOMO IPN PROCESS ==================', "\n";
         $captureIPN = new CaptureIPN($env);
         $captureIPNRequest = $captureIPN->getIPNInformationFromMoMo($data);
+        
+        header("Content-Type: application/json;charset=UTF-8");
 
         if (is_null($captureIPNRequest)) {
-            header("Content-Type: application/json;charset=UTF-8");
             http_response_code(400);
-            header('Status: 400 Bad Request');
+            header($_SERVER["SERVER_PROTOCOL"]. ' 400 Bad Request');
             $payload = json_encode(array("message"=>"Bad Request")); 
             
         } else {
+            http_response_code(200);
+            header($_SERVER["SERVER_PROTOCOL"]. ' 200 OK');
             $payload = $captureIPN->execute($captureIPNRequest);
         }
         
@@ -98,10 +101,6 @@ class CaptureIPN extends Process
 
     public function execute(CaptureIPNRequest $captureIPNRequest): string
     {
-        header("Content-Type: application/json;charset=UTF-8");
-        http_response_code(200);
-        header('Status: 200 OK');
-
         //create signature
         $rawHash = Parameter::PARTNER_CODE . "=" . $captureIPNRequest->getPartnerCode() .
                 "&" . Parameter::ACCESS_KEY . "=" . $captureIPNRequest->getAccessKey() .
