@@ -1,6 +1,5 @@
 <?php
 
-
 namespace MService\Payment\PayGate\Processors;
 
 use MService\Payment\PayGate\Models\CaptureIPNRequest;
@@ -20,22 +19,24 @@ class CaptureIPN extends Process
 
     public static function process(Environment $env, string $data)
     {
-        try {
-            echo '========================== START CAPTURE MOMO IPN PROCESS ==================', "\n";
-            $captureIPN = new CaptureIPN($env);
-            $captureIPNRequest = $captureIPN->getIPNInformationFromMoMo($data);
+        echo '========================== START CAPTURE MOMO IPN PROCESS ==================', "\n";
+        $captureIPN = new CaptureIPN($env);
+        $captureIPNRequest = $captureIPN->getIPNInformationFromMoMo($data);
 
-            if (is_null($captureIPNRequest)) {
-                throw new MoMoException('MoMo POST Request for Capture MoMo IPN is invalid');
-            }
+        if (is_null($captureIPNRequest)) {
+            header("Content-Type: application/json;charset=UTF-8");
+            http_response_code(400);
+            header('Status: 400 Bad Request');
+            $payload = json_encode(array("message"=>"Bad Request")); 
+            
+        } else {
             $payload = $captureIPN->execute($captureIPNRequest);
-            echo '========================== END CAPTURE MOMO IPN PROCESS ==================', "\n";
-
-            return $payload;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
         }
+        
+        echo $payload, "\n";
+        echo '========================== END CAPTURE MOMO IPN PROCESS ==================', "\n";
+
+        return $payload;
     }
 
     public function getIPNInformationFromMoMo(string $data)
@@ -56,25 +57,24 @@ class CaptureIPN extends Process
 
             //check signature
             $rawData = Parameter::PARTNER_CODE . "=" . $ipn->getPartnerCode() .
-                "&" . Parameter::ACCESS_KEY . "=" . $ipn->getAccessKey() .
-                "&" . Parameter::REQUEST_ID . "=" . $ipn->getRequestId() .
-                "&" . Parameter::AMOUNT . "=" . $ipn->getAmount() .
-                "&" . Parameter::ORDER_ID . "=" . $ipn->getOrderId() .
-                "&" . Parameter::ORDER_INFO . "=" . $ipn->getOrderInfo() .
-                "&" . Parameter::ORDER_TYPE . "=" . $ipn->getOrderType() .
-                "&" . Parameter::TRANS_ID . "=" . $ipn->getTransId() .
-                "&" . Parameter::MESSAGE . "=" . $ipn->getMessage() .
-                "&" . Parameter::LOCAL_MESSAGE . "=" . $ipn->getLocalMessage() .
-                "&" . Parameter::DATE . "=" . $ipn->getResponseTime() .
-                "&" . Parameter::ERROR_CODE . "=" . $ipn->getErrorCode() .
-                "&" . Parameter::PAY_TYPE . "=" . $ipn->getPayType() .
-                "&" . Parameter::EXTRA_DATA . "=" . $ipn->getExtraData();
+                    "&" . Parameter::ACCESS_KEY . "=" . $ipn->getAccessKey() .
+                    "&" . Parameter::REQUEST_ID . "=" . $ipn->getRequestId() .
+                    "&" . Parameter::AMOUNT . "=" . $ipn->getAmount() .
+                    "&" . Parameter::ORDER_ID . "=" . $ipn->getOrderId() .
+                    "&" . Parameter::ORDER_INFO . "=" . $ipn->getOrderInfo() .
+                    "&" . Parameter::ORDER_TYPE . "=" . $ipn->getOrderType() .
+                    "&" . Parameter::TRANS_ID . "=" . $ipn->getTransId() .
+                    "&" . Parameter::MESSAGE . "=" . $ipn->getMessage() .
+                    "&" . Parameter::LOCAL_MESSAGE . "=" . $ipn->getLocalMessage() .
+                    "&" . Parameter::DATE . "=" . $ipn->getResponseTime() .
+                    "&" . Parameter::ERROR_CODE . "=" . $ipn->getErrorCode() .
+                    "&" . Parameter::PAY_TYPE . "=" . $ipn->getPayType() .
+                    "&" . Parameter::EXTRA_DATA . "=" . $ipn->getExtraData();
 
             echo 'getIPNInformationFromMoMo::rawDataBeforeHash::', $rawData, "\n";
             $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
             echo 'getIPNInformationFromMoMo::signature::' . $signature, "\n";
             echo 'getIPNInformationFromMoMo::MoMoSignature::' . $ipn->getSignature(), "\n";
-
             if ($signature != $ipn->getSignature()) {
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
             }
@@ -88,7 +88,7 @@ class CaptureIPN extends Process
                 echo "getQRNotificationFromMoMo::transId::", $ipn->getTransId(), "\n";
                 echo "getQRNotificationFromMoMo::amount::", $ipn->getAmount(), "\n";
             }
-
+            
             return $ipn;
         } catch (MoMoException $e) {
             echo $e->getErrorMessage();
@@ -98,9 +98,12 @@ class CaptureIPN extends Process
 
     public function execute(CaptureIPNRequest $captureIPNRequest): string
     {
-        try {
-            //check signature
-            $rawHash = Parameter::PARTNER_CODE . "=" . $captureIPNRequest->getPartnerCode() .
+        header("Content-Type: application/json;charset=UTF-8");
+        http_response_code(200);
+        header('Status: 200 OK');
+
+        //create signature
+        $rawHash = Parameter::PARTNER_CODE . "=" . $captureIPNRequest->getPartnerCode() .
                 "&" . Parameter::ACCESS_KEY . "=" . $captureIPNRequest->getAccessKey() .
                 "&" . Parameter::REQUEST_ID . "=" . $captureIPNRequest->getRequestId() .
                 "&" . Parameter::ORDER_ID . "=" . $captureIPNRequest->getOrderId() .
@@ -109,29 +112,24 @@ class CaptureIPN extends Process
                 "&" . Parameter::DATE . "=" . $captureIPNRequest->getResponseTime() .
                 "&" . Parameter::EXTRA_DATA . "=" . $captureIPNRequest->getExtraData();
 
-            echo "sendCaptureMoMoIPNResponseToMoMoServer::partnerRawDataBeforeHash::" . $rawHash . "\n";
-            $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "sendCaptureMoMoIPNResponseToMoMoServer::partnerSignature::" . $signature . "\n";
+        echo "sendCaptureMoMoIPNResponseToMoMoServer::partnerRawDataBeforeHash::" . $rawHash . "\n";
+        $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
+        echo "sendCaptureMoMoIPNResponseToMoMoServer::partnerSignature::" . $signature . "\n";
 
-            $arr = array(
-                Parameter::PARTNER_CODE => $captureIPNRequest->getPartnerCode(),
-                Parameter::ACCESS_KEY => $captureIPNRequest->getAccessKey(),
-                Parameter::REQUEST_ID => $captureIPNRequest->getRequestId(),
-                Parameter::ORDER_ID => $captureIPNRequest->getOrderId(),
-                Parameter::ERROR_CODE => $captureIPNRequest->getErrorCode(),
-                Parameter::MESSAGE => $captureIPNRequest->getMessage(),
-                Parameter::DATE => $captureIPNRequest->getResponseTime(),
-                Parameter::EXTRA_DATA => $captureIPNRequest->getExtraData(),
-                Parameter::SIGNATURE => $captureIPNRequest->getSignature(),
-            );
+        $arr = array(
+                        Parameter::PARTNER_CODE => $captureIPNRequest->getPartnerCode(),
+                        Parameter::ACCESS_KEY => $captureIPNRequest->getAccessKey(),
+                        Parameter::REQUEST_ID => $captureIPNRequest->getRequestId(),
+                        Parameter::ORDER_ID => $captureIPNRequest->getOrderId(),
+                        Parameter::ERROR_CODE => $captureIPNRequest->getErrorCode(),
+                        Parameter::MESSAGE => $captureIPNRequest->getMessage(),
+                        Parameter::DATE => $captureIPNRequest->getResponseTime(),
+                        Parameter::EXTRA_DATA => $captureIPNRequest->getExtraData(),
+                        Parameter::SIGNATURE => $captureIPNRequest->getSignature(),
+                    );
 
-            $payload = json_encode($arr);
-            return $payload;
-
-        } catch (MoMoException $e) {
-            echo $e->getErrorMessage();
-        }
-        return '';
+        $payload = json_encode($arr);
+        return $payload;
     }
 
 }
