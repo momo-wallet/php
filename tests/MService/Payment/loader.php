@@ -11,6 +11,3 @@ spl_autoload_register(function($className) {
 
 });
 //autoloaddd
-
-//double check everything about Java
-//deploy to packagist and github
