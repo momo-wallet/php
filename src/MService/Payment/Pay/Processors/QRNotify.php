@@ -1,6 +1,5 @@
 <?php
 
-
 namespace MService\Payment\Pay\Processors;
 
 use MService\Payment\Pay\Models\QRNotificationRequest;
