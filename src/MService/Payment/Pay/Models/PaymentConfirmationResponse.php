@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Pay\Models;
 
-use MService\Payment\Pay\Models\MoMoJson;
 class PaymentConfirmationResponse extends PayResponse
 {
     private $data;

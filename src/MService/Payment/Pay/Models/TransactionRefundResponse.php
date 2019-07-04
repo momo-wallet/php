@@ -1,6 +1,5 @@
 <?php
 
-
 namespace MService\Payment\Pay\Models;
 
 class TransactionRefundResponse extends PayResponse

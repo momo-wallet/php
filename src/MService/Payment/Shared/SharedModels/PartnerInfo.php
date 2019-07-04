@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-
 class PartnerInfo
 {
     private $accessKey;

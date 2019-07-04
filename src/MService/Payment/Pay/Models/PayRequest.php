@@ -3,8 +3,9 @@
 
 namespace MService\Payment\Pay\Models;
 
+use JsonSerializable;
 
-class PayRequest implements \JsonSerializable
+class PayRequest implements JsonSerializable
 {
     private $partnerCode;
     private $partnerRefId;

@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\Constants;
 
-
 class Parameter
 {
     public const PARTNER_CODE = "partnerCode";
@@ -59,6 +58,5 @@ class Parameter
     public const PAY_STATUS_URI = "/pay/query-status";
     public const PAY_REFUND_URI = "/pay/refund";
     public const PAY_QR_CODE_URI = "/pay/notify";
-
 
 }

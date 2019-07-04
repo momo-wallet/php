@@ -5,10 +5,8 @@ namespace MService\Payment\Shared\Utils;
 
 class HttpClient
 {
-    //error and exception handling
     public static function HTTPPost($url, $uri, string $payload)
     {
-
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_POST, TRUE);

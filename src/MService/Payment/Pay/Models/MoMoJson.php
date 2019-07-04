@@ -3,8 +3,9 @@
 
 namespace MService\Payment\Pay\Models;
 
+use JsonSerializable;
 
-class MoMoJson implements \JsonSerializable
+class MoMoJson implements JsonSerializable
 {
     private $partnerCode;
     private $partnerRefId;

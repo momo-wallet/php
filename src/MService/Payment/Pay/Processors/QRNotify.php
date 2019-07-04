@@ -19,6 +19,26 @@ class QRNotify extends Process
         parent::__construct($environment);
     }
 
+    public static function process(Environment $env, string $data)
+    {
+        try {
+            echo '========================== START QR NOTIFICATION PROCESS ==================', "\n";
+            $qrNotify = new QRNotify($env);
+            $qrNotificationRequest = $qrNotify->getQRNotificationFromMoMo($data);
+
+            if (is_null($qrNotificationRequest)) {
+                throw new MoMoException('MoMo POST Request for QR Notification Payment is invalid');
+            }
+            $qrNotificationResponse = $qrNotify->execute($qrNotificationRequest);
+            echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
+
+            return $qrNotificationResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
+    }
+
     public function getQRNotificationFromMoMo(string $data)
     {
         try {
@@ -101,26 +121,6 @@ class QRNotify extends Process
         }
 
         return null;
-    }
-
-    public static function process(Environment $env, string $data)
-    {
-        try {
-            echo '========================== START QR NOTIFICATION PROCESS ==================', "\n";
-            $qrNotify = new QRNotify($env);
-            $qrNotificationRequest = $qrNotify->getQRNotificationFromMoMo($data);
-
-            if (is_null($qrNotificationRequest)) {
-                throw new MoMoException('MoMo POST Request for QR Notification Payment is invalid');
-            }
-            $qrNotificationResponse = $qrNotify->execute($qrNotificationRequest);
-            echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
-
-            return $qrNotificationResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 
 }

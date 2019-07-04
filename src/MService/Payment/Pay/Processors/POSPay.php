@@ -3,9 +3,9 @@
 
 namespace MService\Payment\Pay\Processors;
 
-use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Pay\Models\POSPayRequest;
 use MService\Payment\Pay\Models\POSPayResponse;
+use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\Process;
@@ -20,6 +20,24 @@ class POSPay extends Process
         parent::__construct($environment);
     }
 
+    public
+    static function process($env, $paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null)
+    {
+        try {
+            echo '========================== START POS PAYMENT STATUS ==================', "\n";
+
+            $posPay = new POSPay($env);
+            $posPayRequest = $posPay->createPOSPayRequest($paymentCode, $amount, $publicKey, $partnerRefId, $description, $storeId, $storeName);
+            $posPayResponse = $posPay->execute($posPayRequest);
+
+            echo '========================== END POS PAYMENT STATUS ==================', "\n";
+            return $posPayResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
+    }
+
     public function createPOSPayRequest($paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null): POSPayRequest
     {
 
@@ -32,7 +50,9 @@ class POSPay extends Process
             Parameter::STORE_NAME => $storeName
         );
 
-        echo 'createPOSPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {return !is_null($var);})), "\n";
+        echo 'createPOSPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
+            return !is_null($var);
+        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
         echo 'createPOSPayRequest::hashRSA::' . $hash, "\n";
 
@@ -76,23 +96,5 @@ class POSPay extends Process
             echo $exception->getErrorMessage();
         }
         return null;
-    }
-
-    public
-    static function process($env, $paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null)
-    {
-        try {
-            echo '========================== START POS PAYMENT STATUS ==================', "\n";
-
-            $posPay = new POSPay($env);
-            $posPayRequest = $posPay->createPOSPayRequest($paymentCode, $amount, $publicKey, $partnerRefId, $description, $storeId, $storeName);
-            $posPayResponse = $posPay->execute($posPayRequest);
-
-            echo '========================== END POS PAYMENT STATUS ==================', "\n";
-            return $posPayResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 }

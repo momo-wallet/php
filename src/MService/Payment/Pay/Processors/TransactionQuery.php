@@ -20,6 +20,23 @@ class TransactionQuery extends Process
         parent::__construct($environment);
     }
 
+    public static function process($env, $requestId, $publicKey, $partnerRefId, $momoTransId = null)
+    {
+        try {
+            echo '========================== START TRANSACTION QUERY STATUS ==================', "\n";
+
+            $transactionQuery = new TransactionQuery($env);
+            $transactionQueryRequest = $transactionQuery->createTransactionQueryRequest($requestId, $publicKey, $partnerRefId, $momoTransId);
+            $transactionQueryResponse = $transactionQuery->execute($transactionQueryRequest);
+
+            echo '========================== END TRANSACTION QUERY STATUS ==================', "\n";
+            return $transactionQueryResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
+    }
+
     public function createTransactionQueryRequest($requestId, $publicKey, $partnerRefId, $momoTransId = null): TransactionQueryRequest
     {
 
@@ -30,7 +47,9 @@ class TransactionQuery extends Process
             Parameter::MOMO_TRANS_ID => $momoTransId
         );
 
-        echo 'createTransactionQueryRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {return !is_null($var);})), "\n";
+        echo 'createTransactionQueryRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
+            return !is_null($var);
+        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
         echo 'createTransactionQueryRequest::hashRSA::' . $hash, "\n";
 
@@ -72,23 +91,5 @@ class TransactionQuery extends Process
             echo $exception->getErrorMessage();
         }
         return null;
-    }
-
-
-    public static function process($env, $requestId, $publicKey, $partnerRefId, $momoTransId = null)
-    {
-        try {
-            echo '========================== START TRANSACTION QUERY STATUS ==================', "\n";
-
-            $transactionQuery = new TransactionQuery($env);
-            $transactionQueryRequest = $transactionQuery->createTransactionQueryRequest($requestId, $publicKey, $partnerRefId, $momoTransId);
-            $transactionQueryResponse = $transactionQuery->execute($transactionQueryRequest);
-
-            echo '========================== END TRANSACTION QUERY STATUS ==================', "\n";
-            return $transactionQueryResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 }

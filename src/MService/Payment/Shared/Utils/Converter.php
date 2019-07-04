@@ -38,4 +38,3 @@ class Converter
         return $array;
     }
 }
-

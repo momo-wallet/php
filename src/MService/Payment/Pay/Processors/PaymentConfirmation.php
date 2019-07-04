@@ -20,6 +20,24 @@ class PaymentConfirmation extends Process
         parent::__construct($environment);
     }
 
+    public static function process($env, $partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber = null, $description = null)
+    {
+        try {
+            echo '========================== START PAYMENT CONFIRMATION PROCESS ==================', "\n";
+
+            $paymentConfirmation = new PaymentConfirmation($env);
+            $paymentConfirmationRequest = $paymentConfirmation->createPaymentConfirmationRequest($partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber, $description);
+            $paymentConfirmationResponse = $paymentConfirmation->execute($paymentConfirmationRequest);
+
+
+            echo '========================== END PAYMENT CONFIRMATION PROCESS ==================', "\n";
+            return $paymentConfirmationResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
+    }
+
     public function createPaymentConfirmationRequest($partnerRefId, $requestType, $momoTransId, $requestId,
                                                      $customerNumber = null, $description = null): PaymentConfirmationRequest
     {
@@ -106,23 +124,5 @@ class PaymentConfirmation extends Process
             echo $exception->getErrorMessage();
         }
         return null;
-    }
-
-    public static function process($env, $partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber = null, $description = null)
-    {
-        try {
-            echo '========================== START PAYMENT CONFIRMATION PROCESS ==================', "\n";
-
-            $paymentConfirmation = new PaymentConfirmation($env);
-            $paymentConfirmationRequest = $paymentConfirmation->createPaymentConfirmationRequest($partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber, $description);
-            $paymentConfirmationResponse = $paymentConfirmation->execute($paymentConfirmationRequest);
-
-
-            echo '========================== END PAYMENT CONFIRMATION PROCESS ==================', "\n";
-            return $paymentConfirmationResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 }

@@ -6,7 +6,6 @@ namespace MService\Payment\Pay\Processors;
 use MService\Payment\Pay\Models\AppPayRequest;
 use MService\Payment\Pay\Models\AppPayResponse;
 use MService\Payment\Shared\Constants\Parameter;
-use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\Process;
 use MService\Payment\Shared\Utils\Encoder;
@@ -19,6 +18,25 @@ class AppPay extends Process
     public function __construct(Environment $environment)
     {
         parent::__construct($environment);
+    }
+
+    public static function process($env, $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
+                                   $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null)
+    {
+        try {
+            echo '========================== START APP IN APP PAYMENT PROCESS ==================', "\n";
+
+            $appPay = new AppPay($env);
+            $appPayRequest = $appPay->createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version, $payType, $description,
+                $partnerName, $partnerTransId, $storeId, $storeName);
+            $appPayResponse = $appPay->execute($appPayRequest);
+
+            echo '========================== END APP IN APP PAYMENT PROCESS ==================', "\n";
+            return $appPayResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
     }
 
     public function createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
@@ -35,7 +53,9 @@ class AppPay extends Process
             Parameter::STORE_NAME => $storeName
         );
 
-        echo 'createAppPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {return !is_null($var);})), "\n";
+        echo 'createAppPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
+            return !is_null($var);
+        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
         echo 'createAppPayRequest::hashRSA::' . $hash, "\n";
 
@@ -102,25 +122,6 @@ class AppPay extends Process
             echo $exception->getErrorMessage();
         }
         return null;
-    }
-
-    public static function process($env, $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
-                                   $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null)
-    {
-        try {
-            echo '========================== START APP IN APP PAYMENT PROCESS ==================', "\n";
-
-            $appPay = new AppPay($env);
-            $appPayRequest = $appPay->createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version, $payType, $description,
-                                                            $partnerName, $partnerTransId, $storeId, $storeName);
-            $appPayResponse = $appPay->execute($appPayRequest);
-
-            echo '========================== END APP IN APP PAYMENT PROCESS ==================', "\n";
-            return $appPayResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 
 }

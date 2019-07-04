@@ -1,6 +1,6 @@
 <?php
 
-require_once "../loader.php";
+require_once "../../../../loader.php";
 
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;

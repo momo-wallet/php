@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Pay\Models;
 
-
 class TransactionQueryResponse extends PayResponse
 {
     private $data;

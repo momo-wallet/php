@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\Utils;
 
-
 class Encoder
 {
 
@@ -35,7 +34,6 @@ class Encoder
             trigger_error("Failed to decrypt data");
             return "";
         }
-
     }
 
 }

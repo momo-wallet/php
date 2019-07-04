@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-
 class PartnerClientInfo
 {
     private $id;
@@ -70,6 +69,5 @@ class PartnerClientInfo
     {
         $this->fullName = $fullName;
     }
-
 
 }

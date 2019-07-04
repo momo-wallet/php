@@ -13,7 +13,6 @@ use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
 
-
 class PayATM extends Process
 {
 

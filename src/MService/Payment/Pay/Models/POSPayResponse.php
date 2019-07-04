@@ -3,8 +3,9 @@
 
 namespace MService\Payment\Pay\Models;
 
+use JsonSerializable;
 
-class POSPayResponse implements \JsonSerializable
+class POSPayResponse implements JsonSerializable
 {
     private $status;
     private $message;

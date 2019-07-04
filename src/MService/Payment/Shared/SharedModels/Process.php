@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-
 class Process
 {
     private $environment;
@@ -61,6 +60,5 @@ class Process
     {
         $this->partnerInfo = $partnerInfo;
     }
-
 
 }

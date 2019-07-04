@@ -24,15 +24,16 @@ class Environment
         $this->target = $target;
     }
 
-    public static function selectEnv($target) {
+    public static function selectEnv($target)
+    {
         switch ($target) {
             case "dev":
-                 $devInfo = new PartnerInfo("MOMOLRJZ20181206", "mTCKt9W3eU1m39TW", "KqBEecvaJf1nULnhPF5htpG3AMtDIOlD");
-                 $dev = new Environment("https://test-payment.momo.vn/", $devInfo, "development");
+                $devInfo = new PartnerInfo("MOMOLRJZ20181206", "mTCKt9W3eU1m39TW", "KqBEecvaJf1nULnhPF5htpG3AMtDIOlD");
+                $dev = new Environment("https://test-payment.momo.vn", $devInfo, "development");
                 return $dev;
             case "prod":
                 $productionInfo = new PartnerInfo("MOMO", "F8BBA842ECF85", "K951B6PE1waDMi640xX08PD3vg6EkVlz");
-                $production = new Environment("https://payment.momo.vn/", $productionInfo, "production");
+                $production = new Environment("https://payment.momo.vn", $productionInfo, "production");
                 return $production;
             default:
                 throw new MoMoException("MoMo doesnt provide other environment: dev and prod");
@@ -86,6 +87,5 @@ class Environment
     {
         $this->target = $target;
     }
-
 
 }

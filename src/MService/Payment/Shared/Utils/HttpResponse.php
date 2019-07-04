@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\Utils;
 
-
 class HttpResponse
 {
     protected $statusCode;

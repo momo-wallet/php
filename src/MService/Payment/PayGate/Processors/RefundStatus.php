@@ -62,7 +62,7 @@ class RefundStatus extends Process
         return new RefundStatusRequest($arr);
     }
 
-    public function execute(RefundStatusRequest $refundStatusRequest) : array
+    public function execute(RefundStatusRequest $refundStatusRequest): array
     {
         try {
             $data = json_encode($refundStatusRequest);

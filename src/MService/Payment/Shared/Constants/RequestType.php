@@ -3,7 +3,6 @@
 
 namespace MService\Payment\Shared\Constants;
 
-
 class RequestType
 {
     /*
@@ -25,15 +24,12 @@ class RequestType
     const TRANS_TYPE_MOMO_WALLET = "momo_wallet";
 
     const FINISH_WITH_MOMO_ATM = "finishProcessMoMoATM"; //
-
     const PAY_WITH_QR = "finishProcessMoMoATM"; //
 
     const CONFIRM_APP_TRANSACTION = "capture";
     const CANCEL_APP_TRANSACTION = "revertAuthorize";
-
     const VERSION = 2.0;
     const APP_PAY_TYPE = 3;
-
 
     /*
      * ========================= USING INTERNAL ==============================

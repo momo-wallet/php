@@ -20,6 +20,23 @@ class TransactionRefund extends Process
         parent::__construct($environment);
     }
 
+    public static function process($env, $requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null)
+    {
+        try {
+            echo '========================== START TRANSACTION REFUND STATUS ==================', "\n";
+
+            $transactionRefund = new TransactionRefund($env);
+            $transactionRefundRequest = $transactionRefund->createTransactionRefundRequest($requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId, $description);
+            $transactionRefundResponse = $transactionRefund->execute($transactionRefundRequest);
+
+            echo '========================== END TRANSACTION REFUND STATUS ==================', "\n";
+            return $transactionRefundResponse;
+
+        } catch (MoMoException $exception) {
+            echo $exception->getErrorMessage();
+        }
+    }
+
     public function createTransactionRefundRequest($requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null): TransactionRefundRequest
     {
 
@@ -32,7 +49,9 @@ class TransactionRefund extends Process
             Parameter::MOMO_TRANS_ID => $momoTransId
         );
 
-        echo 'createTransactionRefundRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {return !is_null($var);})), "\n";
+        echo 'createTransactionRefundRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
+            return !is_null($var);
+        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
         echo 'createTransactionRefundRequest::hashRSA::' . $hash, "\n";
 
@@ -73,23 +92,5 @@ class TransactionRefund extends Process
             echo $exception->getErrorMessage();
         }
         return null;
-    }
-
-
-    public static function process($env, $requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null)
-    {
-        try {
-            echo '========================== START TRANSACTION REFUND STATUS ==================', "\n";
-
-            $transactionRefund = new TransactionRefund($env);
-            $transactionRefundRequest = $transactionRefund->createTransactionRefundRequest($requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId, $description);
-            $transactionRefundResponse = $transactionRefund->execute($transactionRefundRequest);
-
-            echo '========================== END TRANSACTION REFUND STATUS ==================', "\n";
-            return $transactionRefundResponse;
-
-        } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
-        }
     }
 }
