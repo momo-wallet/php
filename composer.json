@@ -30,5 +30,7 @@
         "psr-4": {
             "MService\\Payment\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
