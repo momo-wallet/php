@@ -25,7 +25,7 @@ class QRNotifyTest extends TestCase
 
     }
 
-    public function testMoMoRequestWrong()
+    public function testMoMoRequestSuccessful()
     {
         $data = "{
   \"partnerCode\": \"MOMOIQA420180417\",
@@ -38,20 +38,22 @@ class QRNotifyTest extends TestCase
   \"status\": 0,
   \"message\": \"Thành Công\",
   \"responseTime\": 1555472829549,
-  \"signature\": \"a97c8a08e574a336edbda1e08373a00861dc7a894d09c98a23fd9e834e35645c\",
+  \"signature\": \"cd0d82ad983098a2fb99b8e49266ed7bd4db85ebf77d13b2db2f755ff0600fa0\",
   \"storeId\": \"store001\"
 }";
-        $qrNotify = new QRNotify(Environment::selectEnv('dev'));
+        $env = new Environment("teehee", new PartnerInfo("TNWFx9JWayevKPiB8LyTgODiCSrjstXN", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+            'testing');
+        $qrNotify = new QRNotify($env);
         $request = $qrNotify->getQRNotificationFromMoMo($data);
 
-        $this->assertNotInstanceOf(QRNotificationRequest::class, $request, "Wrong Verification Process for MoMo QR Notification");
+        $this->assertInstanceOf(QRNotificationRequest::class, $request, "Wrong Verification Process for MoMo QR Notification");
     }
 
-    public function testMoMoRequestCorrect()
+    public function testMoMoRequestFail()
     {
         $data = "{
-  \"partnerCode\": \"MOMOIQA420180417\",
-  \"accessKey\": \"TNWFx9JWayevKPiB8LyTgODiCSrjstXN\",
+  \"partnerCode\": \"MOMOLRJZ20181206\",
+  \"accessKey\": \"mTCKt9W3eU1m39TW\",
   \"amount\": 10000,
   \"partnerRefId\": \"B001221\",
   \"partnerTransId\": \"\",
@@ -63,14 +65,11 @@ class QRNotifyTest extends TestCase
   \"signature\": \"3ec88652f5d86997780a6adf1545c2617ca9e39be66f94937cb6187ebd66d1b4\",
   \"storeId\": \"store001\"
 }";
+
         $qrNotify = new QRNotify(Environment::selectEnv('dev'));
         $request = $qrNotify->getQRNotificationFromMoMo($data);
 
-        $this->assertInstanceOf(QRNotificationRequest::class, $request, "Wrong Verification Process for MoMo QR Notification");
-
-        $this->assertEquals(0, $request->getStatus(), "Wrong Status data when creating QRNotificationRequest");
-        $this->assertEquals('momo_wallet', $request->getTransType(), "Wrong TransType data when creating QRNotificationRequest");
-        $this->assertEquals('B001221', $request->getPartnerRefId(), "Wrong partnerRefId data when creating QRNotificationRequest");
+        $this->assertNotInstanceOf(QRNotificationRequest::class, $request, "Wrong Verification Process for MoMo QR Notification");
 
     }
 }

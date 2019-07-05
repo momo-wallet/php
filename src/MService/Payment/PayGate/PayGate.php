@@ -14,7 +14,7 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use MService\Payment\Shared\Utils\HttpClient;
 
-require "../../../../loader.php";
+include_once "../../../../loader.php";
 
 $orderId = time() . "";
 $requestId = time() . "";

@@ -3,12 +3,11 @@
 namespace MService\Payment\Pay\Processors;
 
 use MService\Payment\Pay\Models\QRNotificationRequest;
-use MService\Payment\Pay\Models\QRNotificationResponse;
 use MService\Payment\Shared\Constants\Parameter;
+use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\Process;
 use MService\Payment\Shared\Utils\Encoder;
-use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
 
 class QRNotify extends Process
@@ -48,13 +47,13 @@ class QRNotify extends Process
             $jsonArr = json_decode($rawPostData, true);
             $qrNotificationRequest = new QRNotificationRequest($jsonArr);
             
-            if (RequestType::TRANS_TYPE_MOMO_WALLET != $ipn->getTransType()) {
+            if (RequestType::TRANS_TYPE_MOMO_WALLET != $qrNotificationRequest->getTransType()) {
                 throw new MoMoException("Wrong Order Type - Please contact MoMo");
             }
-            if ($this->getPartnerInfo()->getPartnerCode() != $ipn->getPartnerCode()) {
+            if ($this->getPartnerInfo()->getPartnerCode() != $qrNotificationRequest->getPartnerCode()) {
                 throw new MoMoException("Wrong PartnerCode - Please contact MoMo");
             }
-            if ($this->getPartnerInfo()->getAccessKey() != $ipn->getAccessKey()) {
+            if ($this->getPartnerInfo()->getAccessKey() != $qrNotificationRequest->getAccessKey()) {
                 throw new MoMoException("Wrong AccessKey - Please contact MoMo");
             }            
 
@@ -71,7 +70,7 @@ class QRNotify extends Process
                         "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
 
             echo 'getQRNotificationFromMoMo::rawDataBeforeHash::', $rawHash, "\n";
-            $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
+            $signature = Encoder::hashSha256($rawHash, $this->getPartnerInfo()->getSecretKey());
             echo 'getQRNotificationFromMoMo::signature::' . $signature, "\n";
             echo 'getQRNotificationFromMoMo::MoMoSignature::' . $qrNotificationRequest->getSignature(), "\n";
 

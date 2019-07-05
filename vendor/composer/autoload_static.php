@@ -104,7 +104,6 @@ class ComposerStaticInite7abd5a880ca31165d273f7881ef0c1b
         'MService\\Payment\\PayGate\\Models\\AIORequest' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/AIORequest.php',
         'MService\\Payment\\PayGate\\Models\\AIOResponse' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/AIOResponse.php',
         'MService\\Payment\\PayGate\\Models\\CaptureIPNRequest' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/CaptureIPNRequest.php',
-        'MService\\Payment\\PayGate\\Models\\CaptureIPNResponse' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/CaptureIPNResponse.php',
         'MService\\Payment\\PayGate\\Models\\CaptureMoMoRequest' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/CaptureMoMoRequest.php',
         'MService\\Payment\\PayGate\\Models\\CaptureMoMoResponse' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/CaptureMoMoResponse.php',
         'MService\\Payment\\PayGate\\Models\\PayATMRequest' => __DIR__ . '/../..' . '/src/MService/Payment/PayGate/Models/PayATMRequest.php',

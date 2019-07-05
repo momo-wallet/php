@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../../../loader.php";
+include_once "../../../../loader.php";
 
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
@@ -22,7 +22,7 @@ PfPrNwIDAQAB
 $requestId = time() . "";
 $partnerRefId = time() . "";
 
-//POSPay::process($env, 'MM468121859458188758', 50000, $publicKey, $partnerRefId, null, null, null);
+POSPay::process($env, 'MM587977818202493946', 50000, $publicKey, $partnerRefId, '', '', '');
 //PaymentConfirmation::process($env, '1562138427', "capture", "2305016460", $requestId);
 //
 //TransactionQuery::process($env, '1562138468', $publicKey, '1562138427');

@@ -37,7 +37,6 @@ return array(
     'MService\\Payment\\PayGate\\Models\\AIORequest' => $baseDir . '/src/MService/Payment/PayGate/Models/AIORequest.php',
     'MService\\Payment\\PayGate\\Models\\AIOResponse' => $baseDir . '/src/MService/Payment/PayGate/Models/AIOResponse.php',
     'MService\\Payment\\PayGate\\Models\\CaptureIPNRequest' => $baseDir . '/src/MService/Payment/PayGate/Models/CaptureIPNRequest.php',
-    'MService\\Payment\\PayGate\\Models\\CaptureIPNResponse' => $baseDir . '/src/MService/Payment/PayGate/Models/CaptureIPNResponse.php',
     'MService\\Payment\\PayGate\\Models\\CaptureMoMoRequest' => $baseDir . '/src/MService/Payment/PayGate/Models/CaptureMoMoRequest.php',
     'MService\\Payment\\PayGate\\Models\\CaptureMoMoResponse' => $baseDir . '/src/MService/Payment/PayGate/Models/CaptureMoMoResponse.php',
     'MService\\Payment\\PayGate\\Models\\PayATMRequest' => $baseDir . '/src/MService/Payment/PayGate/Models/PayATMRequest.php',
