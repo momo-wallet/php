@@ -2,7 +2,6 @@
 
 namespace MService\Payment\PayGate\Processors;
 
-include_once "../../../../../loader.php";
 
 use MService\Payment\PayGate\Models\CaptureMoMoRequest;
 use MService\Payment\PayGate\Models\CaptureMoMoResponse;

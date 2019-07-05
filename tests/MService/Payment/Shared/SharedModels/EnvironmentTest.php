@@ -2,7 +2,6 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-include_once "../../../../../loader.php";
 
 use MService\Payment\Shared\Utils\MoMoException;
 use PHPUnit\Framework\TestCase;

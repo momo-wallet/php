@@ -1,7 +1,5 @@
 <?php
 
-include_once "../../../../loader.php";
-
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
 use MService\Payment\Pay\Processors\TransactionQuery;

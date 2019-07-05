@@ -1,8 +1,5 @@
 <?php
 
-
-namespace MService\Payment\PayGate;
-
 use MService\Payment\PayGate\Processors\CaptureIPN;
 use MService\Payment\PayGate\Processors\CaptureMoMo;
 use MService\Payment\PayGate\Processors\PayATM;
@@ -13,8 +10,6 @@ use MService\Payment\PayGate\Processors\RefundMoMo;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use MService\Payment\Shared\Utils\HttpClient;
-
-include_once "../../../../loader.php";
 
 $orderId = time() . "";
 $requestId = time() . "";

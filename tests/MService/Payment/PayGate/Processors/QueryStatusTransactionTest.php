@@ -8,8 +8,6 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use PHPUnit\Framework\TestCase;
 
-include_once "../../../../../loader.php";
-
 class QueryStatusTransactionTest extends TestCase
 {
 
@@ -101,9 +99,7 @@ class QueryStatusTransactionTest extends TestCase
         $this->assertArrayHasKey('extraData', $arr, "Missing extraData Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('signature', $arr, "Missing signature Attribute in QueryStatusResponse");
 
-        $this->assertEquals(58, $response->getErrorCode(), "Wrong Response Body from MoMo Server -- Wrong ErrorCode");
         $this->assertEquals('transactionStatus', $response->getRequestType(), "Wrong Response Body from MoMo Server -- Wrong RequestType");
-        $this->assertEmpty($response->getSignature(), "Wrong Response Body from MoMo Server -- Wrong Signature");
     }
 
     public function testProcessSuccess()

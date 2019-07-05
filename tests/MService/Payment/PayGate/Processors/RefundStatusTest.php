@@ -8,7 +8,6 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use PHPUnit\Framework\TestCase;
 
-include_once "../../../../../loader.php";
 
 class RefundStatusTest extends TestCase
 {

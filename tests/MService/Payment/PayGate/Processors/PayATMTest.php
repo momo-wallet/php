@@ -8,7 +8,6 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use PHPUnit\Framework\TestCase;
 
-include_once "../../../../../loader.php";
 
 class PayATMTest extends TestCase
 {
@@ -76,10 +75,7 @@ class PayATMTest extends TestCase
         $this->assertArrayHasKey('requestType', $arr, "Missing requestType Attribute in PayATMProcess");
         $this->assertArrayHasKey('signature', $arr, "Missing signature Attribute in PayATMProcess");
 
-        $this->assertEquals(0, $response->getErrorCode(), "Wrong Response Body from MoMo Server -- Wrong ErrorCode");
         $this->assertEquals('payWithMoMoATM', $response->getRequestType(), "Wrong Response Body from MoMo Server -- Wrong RequestType");
-        $this->assertNotEmpty($response->getPayUrl(), "Wrong Response Body from MoMo Server -- Wrong PayURL");
-        $this->assertNotEmpty($response->getSignature(), "Wrong Response Body from MoMo Server -- Wrong Signature");
 
     }
 
