@@ -3,13 +3,14 @@
 
 namespace MService\Payment\Shared\Utils;
 
-use MService\Payment\Shared\SharedModels\Log;
+use MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger;
 
 class HttpClient
 {
-    public static function HTTPPost($url, string $payload)
+    public static function HTTPPost($url, string $payload, MoMoLogger $logger = null)
     {
-        $logger = (new Log())->getLogger();
+        if (is_null($logger))
+            $logger = new MoMoLogger();
 
         $ch = curl_init();
 

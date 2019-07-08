@@ -72,7 +72,7 @@ class AppPay extends Process
     {
         try {
             $data = Converter::objectToJsonStrNoNull($appPayRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");

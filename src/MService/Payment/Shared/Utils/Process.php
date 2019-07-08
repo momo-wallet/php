@@ -64,4 +64,20 @@ class Process
         $this->partnerInfo = $partnerInfo;
     }
 
+    /**
+     * @return \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger
+     */
+    public function getLogger(): \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger
+    {
+        return $this->logger;
+    }
+
+    /**
+     * @param \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger $logger
+     */
+    public function setLogger(\MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger $logger): void
+    {
+        $this->logger = $logger;
+    }
+
 }
