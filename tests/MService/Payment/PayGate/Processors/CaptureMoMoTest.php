@@ -7,6 +7,7 @@ use MService\Payment\PayGate\Models\CaptureMoMoRequest;
 use MService\Payment\PayGate\Models\CaptureMoMoResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 class CaptureMoMoTest extends TestCase
@@ -26,7 +27,7 @@ class CaptureMoMoTest extends TestCase
 
     public function testCreateCaptureMoMoRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -36,7 +37,7 @@ class CaptureMoMoTest extends TestCase
         $request = $captureMoMo->createCaptureMoMoRequest($orderId, "Payw With MoMo", '50000', 'asjyt', $requestId, $testURL, $testURL);
         $this->assertInstanceOf(CaptureMoMoRequest::class, $request, "Wrong Data Type for createCaptureMoMoRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in CaptureMoMoRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in CaptureMoMoRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in CaptureMoMoRequest");
@@ -55,7 +56,7 @@ class CaptureMoMoTest extends TestCase
 
     public function testProcessSuccess()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -63,7 +64,7 @@ class CaptureMoMoTest extends TestCase
         $response = CaptureMoMo::process($env, $orderId, "Pay With MoMo", "50000", "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
         $this->assertInstanceOf(CaptureMoMoResponse::class, $response, "Wrong Data Type in execute in CaptureMoMoProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in CaptureMoMoProcess");
         $this->assertArrayHasKey('errorCode', $arr, "Missing errorCode Attribute in CaptureMoMoProcess");
         $this->assertArrayHasKey('message', $arr, "Missing message Attribute in CaptureMoMoProcess");
@@ -81,13 +82,13 @@ class CaptureMoMoTest extends TestCase
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = CaptureMoMo::process($env, '1562147883', "Pay With MoMo", "35000", "sjygdvi", '1562147883', "https://google.com.vn", "https://google.com.vn");
         $this->assertInstanceOf(CaptureMoMoResponse::class, $response, "Wrong Data Type in execute in CaptureMoMoProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in CaptureMoMoProcess");
         $this->assertArrayHasKey('errorCode', $arr, "Missing errorCode Attribute in CaptureMoMoProcess");
         $this->assertArrayHasKey('message', $arr, "Missing message Attribute in CaptureMoMoProcess");
@@ -102,6 +103,4 @@ class CaptureMoMoTest extends TestCase
         $this->assertNotEmpty($response->getSignature(), "Wrong Response Body from MoMo Server -- Wrong Signature");
 
     }
-
-
 }

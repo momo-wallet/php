@@ -23,12 +23,6 @@ class RefundATMResponse extends RefundMoMoResponse
         $this->setRequestType(RequestType::REFUND_ATM);
     }
 
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_merge($vars, parent::jsonSerialize());
-    }
-
     /**
      * @return mixed
      */

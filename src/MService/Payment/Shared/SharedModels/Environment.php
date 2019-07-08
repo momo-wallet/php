@@ -3,6 +3,7 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
+use Monolog\Logger;
 use MService\Payment\Shared\Utils\MoMoException;
 
 class Environment
@@ -10,21 +11,24 @@ class Environment
     private $momoEndpoint;
     private $partnerInfo;
     private $target;
+    private $logger;
 
     /**
      * Environment constructor.
      * @param $momoEndpoint
      * @param $partnerInfo
      * @param $target
+     *
      */
-    public function __construct($momoEndpoint, $partnerInfo, $target)
+    public function __construct($momoEndpoint, $partnerInfo, $target, $path = __DIR__ . '/test.log', $channelName = 'default', $level = Logger::DEBUG)
     {
         $this->momoEndpoint = $momoEndpoint;
         $this->partnerInfo = $partnerInfo;
         $this->target = $target;
+        $this->logger = (new Log($path, $channelName, $level))->getLogger();
     }
 
-    public static function selectEnv($target)
+    public static function selectEnv($target = "dev")
     {
         switch ($target) {
             case "dev":
@@ -86,6 +90,22 @@ class Environment
     public function setTarget($target): void
     {
         $this->target = $target;
+    }
+
+    /**
+     * @return Logger
+     */
+    public function getLogger(): Logger
+    {
+        return $this->logger;
+    }
+
+    /**
+     * @param Logger $logger
+     */
+    public function setLogger(Logger $logger): void
+    {
+        $this->logger = $logger;
     }
 
 }

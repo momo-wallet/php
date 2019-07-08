@@ -6,6 +6,7 @@ use MService\Payment\PayGate\Models\RefundMoMoRequest;
 use MService\Payment\PayGate\Models\RefundMoMoResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 
@@ -28,7 +29,7 @@ class RefundMoMoTest extends TestCase
 
     public function testCreateRefundRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $refundMoMo = new RefundMoMo($env);
@@ -36,7 +37,7 @@ class RefundMoMoTest extends TestCase
         $request = $refundMoMo->createRefundMoMoRequest($orderId, $orderId, 10000, $orderId);
         $this->assertInstanceOf(RefundMoMoRequest::class, $request, "Wrong Data Type for createRefundMoMoRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundMoMoRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundMoMoRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundMoMoRequest");
@@ -47,12 +48,11 @@ class RefundMoMoTest extends TestCase
         $this->assertArrayHasKey('signature', $arr, "Missing signature Attribute in RefundMoMoRequest");
 
         $this->assertEquals('refundMoMoWallet', $request->getRequestType(), "Wrong Request Type for RefundMoMoRequest");
-
     }
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
 
@@ -60,7 +60,7 @@ class RefundMoMoTest extends TestCase
 
         $this->assertInstanceOf(RefundMoMoResponse::class, $response, "Wrong Data Type in execute in RefundMoMoProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundMoMoResponse");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundMoMoResponse");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundMoMoResponse");

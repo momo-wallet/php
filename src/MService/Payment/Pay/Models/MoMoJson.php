@@ -3,9 +3,7 @@
 
 namespace MService\Payment\Pay\Models;
 
-use JsonSerializable;
-
-class MoMoJson implements JsonSerializable
+class MoMoJson
 {
     private $partnerCode;
     private $partnerRefId;
@@ -37,12 +35,6 @@ class MoMoJson implements JsonSerializable
                 $this->{$key} = $params[$key];
             }
         }
-    }
-
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return $vars;
     }
 
     /**

@@ -13,16 +13,10 @@ class TransactionQueryResponse extends PayResponse
         $this->setData($params['data']);
     }
 
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_merge($vars, parent::jsonSerialize());
-    }
-
     /**
      * @return mixed
      */
-    public function getData(): MoMoJson
+    public function getData()
     {
         return $this->data;
     }

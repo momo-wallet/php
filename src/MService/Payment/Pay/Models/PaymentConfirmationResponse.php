@@ -16,16 +16,10 @@ class PaymentConfirmationResponse extends PayResponse
         }
     }
 
-    public function JsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_merge($vars, parent::JsonSerialize());
-    }
-
     /**
      * @return MoMoJson
      */
-    public function getData(): MoMoJson
+    public function getData()
     {
         return $this->data;
     }

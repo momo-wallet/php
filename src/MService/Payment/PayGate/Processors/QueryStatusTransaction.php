@@ -8,10 +8,11 @@ use MService\Payment\PayGate\Models\QueryStatusResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class QueryStatusTransaction extends Process
 {
@@ -22,30 +23,16 @@ class QueryStatusTransaction extends Process
 
     public static function process($env, $orderId, $requestId)
     {
-        try {
-            echo '========================== START QUERY QUERY STATUS ==================', "\n";
+        $queryStatusTransaction = new QueryStatusTransaction($env);
 
-            $queryStatusTransaction = new QueryStatusTransaction($env);
+        try {
             $queryStatusRequest = $queryStatusTransaction->createQueryStatusRequest($orderId, $requestId);
             $queryStatusResponse = $queryStatusTransaction->execute($queryStatusRequest);
 
-            if (!is_null($queryStatusResponse)) {
-
-                if ($queryStatusResponse->getErrorCode() != 0) {
-                    echo "getQueryStatusResponse::errorCode::", $queryStatusResponse->getErrorCode(), "\n";
-                    echo "getQueryStatusResponse::errorMessage::", $queryStatusResponse->getMessage(), "\n";
-                    echo "getQueryStatusResponse::localMessage::", $queryStatusResponse->getLocalMessage(), "\n";
-                } else {
-                    echo "getQueryStatusResponse::requestId::", $queryStatusResponse->getRequestId(), "\n";
-                    echo "getQueryStatusResponse::orderId::", $queryStatusResponse->getOrderId(), "\n";
-                    echo "getQueryStatusResponse::transId::", $queryStatusResponse->getTransId(), "\n";
-                }
-            }
-            echo '========================== END QUERY QUERY STATUS ==================', "\n";
             return $queryStatusResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $queryStatusTransaction->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -58,9 +45,10 @@ class QueryStatusTransaction extends Process
             "&" . Parameter::ORDER_ID . "=" . $orderId .
             "&" . Parameter::REQUEST_TYPE . "=" . RequestType::TRANSACTION_STATUS;
 
-        echo 'createQueryStatusRequest::rawDataBeforeHash::', $rawData, "\n";
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        echo 'createQueryStatusRequest::signature::' . $signature, "\n";
+
+        $this->logger->info('[QueryStatusRequest] rawData: ' . $rawData
+            . ', [Signature] -> ' . $signature);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -76,8 +64,8 @@ class QueryStatusTransaction extends Process
     public function execute(QueryStatusRequest $queryStatusRequest)
     {
         try {
-            $data = json_encode($queryStatusRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_GATE_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($queryStatusRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -88,7 +76,7 @@ class QueryStatusTransaction extends Process
             return $this->checkResponse($queryStatusResponse);
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
@@ -112,17 +100,18 @@ class QueryStatusTransaction extends Process
                 "&" . Parameter::PAY_TYPE . "=" . $queryStatusResponse->getPayType() .
                 "&" . Parameter::EXTRA_DATA . "=" . $queryStatusResponse->getExtraData();
 
-            echo "getQueryStatusResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
             $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "getQueryStatusResponse::partnerSignature::" . $signature . "\n";
-            echo "getQueryStatusResponse::momoSignature::" . $queryStatusResponse->getSignature() . "\n";
+
+            $this->logger->info("[QueryStatusResponse] rawData: " . $rawHash
+                . ", [Signature] -> " . $signature
+                . ", [MoMoSignature] -> " . $queryStatusResponse->getSignature());
 
             if ($signature == $queryStatusResponse->getSignature())
                 return $queryStatusResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return $queryStatusResponse;
     }

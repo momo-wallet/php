@@ -6,6 +6,7 @@ use MService\Payment\PayGate\Models\RefundATMRequest;
 use MService\Payment\PayGate\Models\RefundATMResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 
@@ -27,7 +28,7 @@ class RefundATMTest extends TestCase
 
     public function testCreateRefundATMRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $refundATM = new RefundATM($env);
@@ -35,7 +36,7 @@ class RefundATMTest extends TestCase
         $request = $refundATM->createRefundATMRequest($orderId, $orderId, 10000, $orderId, 'SML');
         $this->assertInstanceOf(RefundATMRequest::class, $request, "Wrong Data Type for createRefundATMRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundATMRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundATMRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundATMRequest");
@@ -51,14 +52,14 @@ class RefundATMTest extends TestCase
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = RefundATM::process($env, '1562152250', '1562059843', '10000', '2304992176', 'SML');
 
         $this->assertInstanceOf(RefundATMResponse::class, $response, "Wrong Data Type in execute in RefundATMProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundATMResponse");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundATMResponse");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundATMResponse");

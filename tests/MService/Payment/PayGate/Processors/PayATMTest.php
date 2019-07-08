@@ -6,6 +6,7 @@ use MService\Payment\PayGate\Models\PayATMRequest;
 use MService\Payment\PayGate\Models\PayATMResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 
@@ -27,7 +28,7 @@ class PayATMTest extends TestCase
 
     public function testCreatePayATMRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -37,7 +38,7 @@ class PayATMTest extends TestCase
         $request = $payATM->createPayATMRequest($orderId, 'Pay With ATM', '35000', 'fgbfg', $requestId, $testURL, $testURL, 'SML');
         $this->assertInstanceOf(PayATMRequest::class, $request, "Wrong Data Type for createPayATMRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in createPayATMRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in createPayATMRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in createPayATMRequest");
@@ -57,7 +58,7 @@ class PayATMTest extends TestCase
 
     public function testProcessSuccess()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -65,7 +66,7 @@ class PayATMTest extends TestCase
         $response = PayATM::process($env, $orderId, "Pay With MoMo", "35000", '', $requestId, "https://google.com.vn", "https://google.com.vn", "SML");
         $this->assertInstanceOf(PayATMResponse::class, $response, "Wrong Data Type in execute in PayATMProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in PayATMProcess");
         $this->assertArrayHasKey('payUrl', $arr, "Missing payUrl Attribute in PayATMProcess");
         $this->assertArrayHasKey('errorCode', $arr, "Missing errorCode Attribute in PayATMProcess");
@@ -81,13 +82,13 @@ class PayATMTest extends TestCase
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = PayATM::process($env, '1562148833', "Pay With MoMo", "35000", '', '1562148833', "https://google.com.vn", "https://google.com.vn", "SML");
         $this->assertInstanceOf(PayATMResponse::class, $response, "Wrong Data Type in execute in PayATMProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in PayATMProcess");
         $this->assertArrayHasKey('payUrl', $arr, "Missing payUrl Attribute in PayATMProcess");
         $this->assertArrayHasKey('errorCode', $arr, "Missing errorCode Attribute in PayATMProcess");

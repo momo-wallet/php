@@ -1,5 +1,7 @@
 <?php
 
+include_once "../../../../loader.php";
+
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
 use MService\Payment\Pay\Processors\TransactionQuery;
@@ -24,4 +26,7 @@ POSPay::process($env, 'MM587977818202493946', 50000, $publicKey, $partnerRefId, 
 //PaymentConfirmation::process($env, '1562138427', "capture", "2305016460", $requestId);
 //
 //TransactionQuery::process($env, '1562138468', $publicKey, '1562138427');
-//TransactionRefund::process($env, $requestId, 10000, $publicKey, '1562138427', '2305016460');
+//TransactionRefund::process($env, $requestId, 10000, $publicKey, '1562138427', '2305016460');63342
+
+//disable log
+//laravel

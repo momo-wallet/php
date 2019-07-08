@@ -75,12 +75,6 @@ class QRNotificationRequest extends PayResponse
         $this->amount = $amount;
     }
 
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_merge($vars, parent::jsonSerialize());
-    }
-
     /**
      * @return mixed
      */

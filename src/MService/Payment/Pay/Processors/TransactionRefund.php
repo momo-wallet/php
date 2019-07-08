@@ -8,10 +8,11 @@ use MService\Payment\Pay\Models\TransactionRefundResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class TransactionRefund extends Process
 {
@@ -22,18 +23,15 @@ class TransactionRefund extends Process
 
     public static function process($env, $requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null)
     {
-        try {
-            echo '========================== START TRANSACTION REFUND STATUS ==================', "\n";
+        $transactionRefund = new TransactionRefund($env);
 
-            $transactionRefund = new TransactionRefund($env);
+        try {
             $transactionRefundRequest = $transactionRefund->createTransactionRefundRequest($requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId, $description);
             $transactionRefundResponse = $transactionRefund->execute($transactionRefundRequest);
-
-            echo '========================== END TRANSACTION REFUND STATUS ==================', "\n";
             return $transactionRefundResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $transactionRefund->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -49,11 +47,9 @@ class TransactionRefund extends Process
             Parameter::MOMO_TRANS_ID => $momoTransId
         );
 
-        echo 'createTransactionRefundRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
-            return !is_null($var);
-        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        echo 'createTransactionRefundRequest::hashRSA::' . $hash, "\n";
+        $this->logger->info("[TransactionRefundRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+            . ', [Signature] -> ' . $hash);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -68,8 +64,8 @@ class TransactionRefund extends Process
     public function execute(TransactionRefundRequest $transactionRefundRequest)
     {
         try {
-            $data = json_encode($transactionRefundRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_REFUND_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($transactionRefundRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -77,19 +73,10 @@ class TransactionRefund extends Process
 
             $transactionRefundResponse = new TransactionRefundResponse(json_decode($response->getBody(), true));
 
-            if ($transactionRefundResponse->getStatus() != 0) {
-                echo "getTransactionRefundResponse::errorCode::", $transactionRefundResponse->getStatus(), "\n";
-                echo "getTransactionRefundResponse::errorMessage::", $transactionRefundResponse->getMessage(), "\n";
-            }
-
-            echo "getTransactionRefundResponse::partnerRefId::", $transactionRefundResponse->getPartnerRefId(), "\n";
-            echo "getTransactionRefundResponse::transid::", $transactionRefundResponse->getTransid(), "\n";
-            echo "getTransactionRefundResponse::amount::", $transactionRefundResponse->getAmount(), "\n";
-
             return $transactionRefundResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }

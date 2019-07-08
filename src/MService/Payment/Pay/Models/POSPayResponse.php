@@ -3,9 +3,7 @@
 
 namespace MService\Payment\Pay\Models;
 
-use JsonSerializable;
-
-class POSPayResponse implements JsonSerializable
+class POSPayResponse
 {
     private $status;
     private $message;
@@ -15,12 +13,6 @@ class POSPayResponse implements JsonSerializable
         $vars = get_object_vars($this);
         $this->setMessage($params['message']);
         $this->setStatus($params['status']);
-    }
-
-    public function JsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return $vars;
     }
 
     /**

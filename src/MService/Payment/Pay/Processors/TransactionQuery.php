@@ -8,10 +8,11 @@ use MService\Payment\Pay\Models\TransactionQueryResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class TransactionQuery extends Process
 {
@@ -22,18 +23,15 @@ class TransactionQuery extends Process
 
     public static function process($env, $requestId, $publicKey, $partnerRefId, $momoTransId = null)
     {
-        try {
-            echo '========================== START TRANSACTION QUERY STATUS ==================', "\n";
+        $transactionQuery = new TransactionQuery($env);
 
-            $transactionQuery = new TransactionQuery($env);
+        try {
             $transactionQueryRequest = $transactionQuery->createTransactionQueryRequest($requestId, $publicKey, $partnerRefId, $momoTransId);
             $transactionQueryResponse = $transactionQuery->execute($transactionQueryRequest);
-
-            echo '========================== END TRANSACTION QUERY STATUS ==================', "\n";
             return $transactionQueryResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $transactionQuery->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -47,11 +45,9 @@ class TransactionQuery extends Process
             Parameter::MOMO_TRANS_ID => $momoTransId
         );
 
-        echo 'createTransactionQueryRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
-            return !is_null($var);
-        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        echo 'createTransactionQueryRequest::hashRSA::' . $hash, "\n";
+        $this->logger->info("[TransactionQueryRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+            . ', [Signature] -> ' . $hash);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -67,8 +63,8 @@ class TransactionQuery extends Process
     public function execute(TransactionQueryRequest $transactionQueryRequest)
     {
         try {
-            $data = json_encode($transactionQueryRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_STATUS_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($transactionQueryRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -76,19 +72,9 @@ class TransactionQuery extends Process
 
             $transactionQueryResponse = new TransactionQueryResponse(json_decode($response->getBody(), true));
 
-            if ($transactionQueryResponse->getStatus() != 0) {
-                echo "getTransactionQueryResponse::errorCode::", $transactionQueryResponse->getStatus(), "\n";
-                echo "getTransactionQueryResponse::errorMessage::", $transactionQueryResponse->getMessage(), "\n";
-            } else {
-                $data = $transactionQueryResponse->getData();
-                echo "getTransactionQueryResponse::billId::", $data->getBillId(), "\n";
-                echo "getTransactionQueryResponse::amount::", $data->getAmount(), "\n";
-                echo "getTransactionQueryResponse::phoneNumber::", $data->getPhoneNumber(), "\n";
-            }
-
             return $transactionQueryResponse;
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }

@@ -21,14 +21,6 @@ class TransactionQueryRequest extends PayRequest
         }
     }
 
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_filter(array_merge($vars, parent::jsonSerialize()), function ($var) {
-            return !is_null($var);
-        });
-    }
-
     /**
      * @return mixed
      */

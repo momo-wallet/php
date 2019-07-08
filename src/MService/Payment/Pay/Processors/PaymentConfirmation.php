@@ -7,10 +7,11 @@ use MService\Payment\Pay\Models\PaymentConfirmationRequest;
 use MService\Payment\Pay\Models\PaymentConfirmationResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class PaymentConfirmation extends Process
 {
@@ -22,19 +23,15 @@ class PaymentConfirmation extends Process
 
     public static function process($env, $partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber = null, $description = null)
     {
-        try {
-            echo '========================== START PAYMENT CONFIRMATION PROCESS ==================', "\n";
+        $paymentConfirmation = new PaymentConfirmation($env);
 
-            $paymentConfirmation = new PaymentConfirmation($env);
+        try {
             $paymentConfirmationRequest = $paymentConfirmation->createPaymentConfirmationRequest($partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber, $description);
             $paymentConfirmationResponse = $paymentConfirmation->execute($paymentConfirmationRequest);
-
-
-            echo '========================== END PAYMENT CONFIRMATION PROCESS ==================', "\n";
             return $paymentConfirmationResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $paymentConfirmation->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -48,9 +45,9 @@ class PaymentConfirmation extends Process
             "&" . Parameter::REQUEST_ID . "=" . $requestId .
             "&" . Parameter::MOMO_TRANS_ID . "=" . $momoTransId;
 
-        echo 'createPaymentConfirmationRequest::rawDataBeforeHash::', $rawData, "\n";
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        echo 'createPaymentConfirmationRequest::signature::' . $signature, "\n";
+        $this->logger->info("[PayConfirmRequest] rawData: " . $rawData
+            . ', [Signature] -> ' . $signature);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -69,8 +66,8 @@ class PaymentConfirmation extends Process
     public function execute(PaymentConfirmationRequest $paymentConfirmationRequest)
     {
         try {
-            $data = json_encode($paymentConfirmationRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_CONFIRMATION_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($paymentConfirmationRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -81,7 +78,7 @@ class PaymentConfirmation extends Process
             return $this->checkResponse($paymentConfirmationResponse);
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
@@ -91,28 +88,20 @@ class PaymentConfirmation extends Process
         try {
 
             if ($paymentConfirmationResponse->getStatus() != 0) {
-                echo "getPaymentConfirmationResponse::errorCode::", $paymentConfirmationResponse->getStatus(), "\n";
-                echo "getPaymentConfirmationResponse::errorMessage::", $paymentConfirmationResponse->getMessage(), "\n";
                 return $paymentConfirmationResponse;
 
             } else {
                 $data = $paymentConfirmationResponse->getData();
-
-                echo "getPaymentConfirmationResponse::partnerCode::", $data->getPartnerCode(), "\n";
-                echo "getPaymentConfirmationResponse::partnerRefId::", $data->getPartnerRefId(), "\n";
-                echo "getPaymentConfirmationResponse::MoMoTransId::", $data->getMomoTransId(), "\n";
-                echo "getPaymentConfirmationResponse::amount::", $data->getAmount(), "\n";
-
 
                 $rawHash = Parameter::AMOUNT . "=" . $data->getAmount() .
                     "&" . Parameter::MOMO_TRANS_ID . "=" . $data->getMomoTransId() .
                     "&" . Parameter::PARTNER_CODE . "=" . $data->getPartnerCode() .
                     "&" . Parameter::PARTNER_REF_ID . "=" . $data->getPartnerRefId();
 
-                echo "getPaymentConfirmationResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
                 $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-                echo "getPaymentConfirmationResponse::partnerSignature::" . $signature . "\n";
-                echo "getPaymentConfirmationResponse::momoSignature::" . $paymentConfirmationResponse->getSignature() . "\n";
+                $this->logger->info("[PayConfirmResponse] rawData: " . $rawHash
+                    . ', [Signature] -> ' . $signature
+                    . ', [MoMoSignature] -> ' . $paymentConfirmationResponse->getSignature());
 
                 if ($signature == $paymentConfirmationResponse->getSignature())
                     return $paymentConfirmationResponse;
@@ -121,7 +110,7 @@ class PaymentConfirmation extends Process
             }
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }

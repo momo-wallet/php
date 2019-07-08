@@ -3,9 +3,7 @@
 
 namespace MService\Payment\Pay\Models;
 
-use JsonSerializable;
-
-class PayRequest implements JsonSerializable
+class PayRequest
 {
     private $partnerCode;
     private $partnerRefId;
@@ -25,12 +23,6 @@ class PayRequest implements JsonSerializable
                 $this->{$key} = $params[$key];
             }
         }
-    }
-
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return $vars;
     }
 
     /**

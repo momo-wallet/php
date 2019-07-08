@@ -8,10 +8,11 @@ use MService\Payment\Pay\Models\POSPayResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class POSPay extends Process
 {
@@ -23,18 +24,15 @@ class POSPay extends Process
     public
     static function process($env, $paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null)
     {
-        try {
-            echo '========================== START POS PAYMENT STATUS ==================', "\n";
+        $posPay = new POSPay($env);
 
-            $posPay = new POSPay($env);
+        try {
             $posPayRequest = $posPay->createPOSPayRequest($paymentCode, $amount, $publicKey, $partnerRefId, $description, $storeId, $storeName);
             $posPayResponse = $posPay->execute($posPayRequest);
-
-            echo '========================== END POS PAYMENT STATUS ==================', "\n";
             return $posPayResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $posPay->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -50,11 +48,9 @@ class POSPay extends Process
             Parameter::STORE_NAME => $storeName
         );
 
-        echo 'createPOSPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
-            return !is_null($var);
-        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        echo 'createPOSPayRequest::hashRSA::' . $hash, "\n";
+        $this->logger->info("[POSPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+            . ', [Signature] -> ' . $hash);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -71,29 +67,19 @@ class POSPay extends Process
     public function execute(POSPayRequest $posPayRequest)
     {
         try {
-            $data = json_encode($posPayRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_POS_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($posPayRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
             }
 
             $posPayResponse = new POSPayResponse(json_decode($response->getBody(), true));
-
-            $data = $posPayResponse->getMessage();
-
-            if ($posPayResponse->getStatus() != 0) {
-                echo "getPOSPayResponse::errorCode::", $posPayResponse->getStatus(), "\n";
-                echo "getPOSPayResponse::errorMessage::", $data->getDescription(), "\n";
-            }
-
-            echo "getPOSPayResponse::transid::", $data->getTransid(), "\n";
-            echo "getPOSPayResponse::amount::", $data->getAmount(), "\n";
-            echo "getPOSPayResponse::phoneNumber::", $data->getPhoneNumber(), "\n";
+            $this->logger->info($data);
 
             return $posPayResponse;
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }

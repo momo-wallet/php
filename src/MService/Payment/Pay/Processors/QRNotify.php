@@ -6,9 +6,9 @@ use MService\Payment\Pay\Models\QRNotificationRequest;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class QRNotify extends Process
 {
@@ -19,7 +19,6 @@ class QRNotify extends Process
 
     public static function process(Environment $env, string $rawPostData)
     {
-        echo '========================== START QR NOTIFICATION PROCESS ==================', "\n";
         $qrNotify = new QRNotify($env);
         $qrNotificationRequest = $qrNotify->getQRNotificationFromMoMo($rawPostData);
 
@@ -27,17 +26,16 @@ class QRNotify extends Process
 
         if (is_null($qrNotificationRequest)) {
             http_response_code(400);
-            header($_SERVER["SERVER_PROTOCOL"]. ' 400 Bad Request');
-            $payload = json_encode(array("message"=>"Bad Request"));
+            header($_SERVER["SERVER_PROTOCOL"] . ' 400 Bad Request');
+            $payload = json_encode(array("message" => "Bad Request"));
 
         } else {
             http_response_code(200);
-            header($_SERVER["SERVER_PROTOCOL"]. ' 200 OK');
+            header($_SERVER["SERVER_PROTOCOL"] . ' 200 OK');
             $payload = $qrNotify->execute($qrNotificationRequest);
         }
 
-        echo $payload, "\n";
-        echo '========================== END QR NOTIFICATION PROCESS ==================', "\n";
+        $qrNotify->logger->info('[QRNotifyResponse] -> ' . $payload);
         return $payload;
     }
 
@@ -46,7 +44,7 @@ class QRNotify extends Process
         try {
             $jsonArr = json_decode($rawPostData, true);
             $qrNotificationRequest = new QRNotificationRequest($jsonArr);
-            
+
             if (RequestType::TRANS_TYPE_MOMO_WALLET != $qrNotificationRequest->getTransType()) {
                 throw new MoMoException("Wrong Order Type - Please contact MoMo");
             }
@@ -55,67 +53,56 @@ class QRNotify extends Process
             }
             if ($this->getPartnerInfo()->getAccessKey() != $qrNotificationRequest->getAccessKey()) {
                 throw new MoMoException("Wrong AccessKey - Please contact MoMo");
-            }            
+            }
 
             $rawHash = Parameter::ACCESS_KEY . "=" . $qrNotificationRequest->getAccessKey() .
-                        "&" . Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
-                        "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
-                        "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
-                        "&" . Parameter::PARTNER_CODE . "=" . $qrNotificationRequest->getPartnerCode() .
-                        "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
-                        "&" . Parameter::PARTNER_TRANS_ID . "=" . $qrNotificationRequest->getPartnerTransId() .
-                        "&" . Parameter::DATE . "=" . $qrNotificationRequest->getResponseTime() .
-                        "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus() .
-                        "&" . Parameter::STORE_ID . "=" . $qrNotificationRequest->getStoreId() .
-                        "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
+                "&" . Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
+                "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
+                "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
+                "&" . Parameter::PARTNER_CODE . "=" . $qrNotificationRequest->getPartnerCode() .
+                "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
+                "&" . Parameter::PARTNER_TRANS_ID . "=" . $qrNotificationRequest->getPartnerTransId() .
+                "&" . Parameter::DATE . "=" . $qrNotificationRequest->getResponseTime() .
+                "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus() .
+                "&" . Parameter::STORE_ID . "=" . $qrNotificationRequest->getStoreId() .
+                "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
 
-            echo 'getQRNotificationFromMoMo::rawDataBeforeHash::', $rawHash, "\n";
             $signature = Encoder::hashSha256($rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo 'getQRNotificationFromMoMo::signature::' . $signature, "\n";
-            echo 'getQRNotificationFromMoMo::MoMoSignature::' . $qrNotificationRequest->getSignature(), "\n";
+            $this->logger->info("[QRNotify From MoMo] rawData: " . $rawHash
+                . ', [Signature] -> ' . $signature
+                . ', [MoMoSignature] -> ' . $qrNotificationRequest->getSignature());
 
             if ($signature != $qrNotificationRequest->getSignature()) {
                 throw new MoMoException("Wrong Signature from MoMo Server");
             }
 
-            if ($qrNotificationRequest->getStatus() != 0) {
-                echo "getQRNotificationFromMoMo::errorCode::", $qrNotificationRequest->getStatus(), "\n";
-                echo "getQRNotificationFromMoMo::errorMessage::", $qrNotificationRequest->getMessage(), "\n";
-            } else {
-                echo "getQRNotificationFromMoMo::partnerRefId::", $qrNotificationRequest->getPartnerRefId(), "\n";
-                echo "getQRNotificationFromMoMo::momoTransId::", $qrNotificationRequest->getMomoTransId(), "\n";
-                echo "getQRNotificationFromMoMo::amount::", $qrNotificationRequest->getAmount(), "\n";
-            }
-
             return $qrNotificationRequest;
 
-        } catch (MoMoException $e) {
-            echo $e->getMessage();
+        } catch (MoMoException $exception) {
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
 
-    public function execute(QRNotificationRequest $qrNotificationRequest) : string
+    public function execute(QRNotificationRequest $qrNotificationRequest): string
     {
         //create signature
         $rawHash = Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .
-                    "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
-                    "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
-                    "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
-                    "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus();
+            "&" . Parameter::MESSAGE . "=" . $qrNotificationRequest->getMessage() .
+            "&" . Parameter::MOMO_TRANS_ID . "=" . $qrNotificationRequest->getMomoTransId() .
+            "&" . Parameter::PARTNER_REF_ID . "=" . $qrNotificationRequest->getPartnerRefId() .
+            "&" . Parameter::STATUS . "=" . $qrNotificationRequest->getStatus();
 
-        echo "sendQRNotificationResponseToMoMoServer::partnerRawDataBeforeHash::" . $rawHash . "\n";
         $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-        echo "sendQRNotificationResponseToMoMoServer::partnerSignature::" . $signature . "\n";
 
         $arr = array(
-                        Parameter::STATUS => $qrNotificationRequest->getStatus(),
-                        Parameter::MESSAGE => $qrNotificationRequest->getMessage(),
-                        Parameter::PARTNER_REF_ID => $qrNotificationRequest->getPartnerRefId(),
-                        Parameter::MOMO_TRANS_ID => $qrNotificationRequest->getMomoTransId(),
-                        Parameter::AMOUNT => $qrNotificationRequest->getAmount(),
-                        Parameter::SIGNATURE => $signature
-                    );
+            Parameter::STATUS => $qrNotificationRequest->getStatus(),
+            Parameter::MESSAGE => $qrNotificationRequest->getMessage(),
+            Parameter::PARTNER_REF_ID => $qrNotificationRequest->getPartnerRefId(),
+            Parameter::MOMO_TRANS_ID => $qrNotificationRequest->getMomoTransId(),
+            Parameter::AMOUNT => $qrNotificationRequest->getAmount(),
+            Parameter::SIGNATURE => $signature
+        );
 
         $payload = json_encode($arr);
         return $payload;

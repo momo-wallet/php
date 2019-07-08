@@ -8,6 +8,7 @@ use MService\Payment\Pay\Models\TransactionQueryRequest;
 use MService\Payment\Pay\Models\TransactionQueryResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 class TransactionQueryTest extends TestCase
@@ -28,7 +29,7 @@ class TransactionQueryTest extends TestCase
 
     public function testCreateTransactionQueryRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/query-status", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -44,7 +45,7 @@ PfPrNwIDAQAB
         $request = $query->createTransactionQueryRequest('1562138468', $publicKey, '1562138427', $momoTransId);
         $this->assertInstanceOf(TransactionQueryRequest::class, $request, "Wrong Data Type in createTransactionQueryRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in createTransactionQueryRequest");
         $this->assertArrayHasKey('partnerRefId', $arr, "Missing partnerRefId Attribute in createTransactionQueryRequest");
         $this->assertArrayHasKey('hash', $arr, "Missing hash Attribute in createTransactionQueryRequest");
@@ -54,7 +55,7 @@ PfPrNwIDAQAB
 
     public function testProcessSuccessful()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/query-status", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -68,13 +69,13 @@ PfPrNwIDAQAB
         $response = TransactionQuery::process($env, '1562138468', $publicKey, '1562138427');
         $this->assertInstanceOf(TransactionQueryResponse::class, $response, "Wrong Data Type in execute in TransactionQueryProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('status', $arr, "Missing status Attribute in TransactionQueryProcess");
         $this->assertArrayHasKey('message', $arr, "Missing message Attribute in TransactionQueryProcess");
         $this->assertArrayHasKey('data', $arr, "Missing data Attribute in TransactionQueryProcess");
         $this->assertInstanceOf(MoMoJson::class, $response->getData(), "Wrong Data Type for data Attribute in TransactionQueryProcess -- Must be Json");
 
-        $jsonArr = $response->getData()->jsonSerialize();
+        $jsonArr = Converter::objectToArray($response->getData());
         $this->assertArrayHasKey('message', $jsonArr, "Missing message Attribute in JSON TransactionQueryProcess");
         $this->assertArrayHasKey('status', $jsonArr, "Missing status Attribute in JSON TransactionQueryProcess");
         $this->assertArrayHasKey('amount', $jsonArr, "Missing amount Attribute in JSON TransactionQueryProcess");
@@ -94,7 +95,7 @@ PfPrNwIDAQAB
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/query-status", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -108,13 +109,13 @@ PfPrNwIDAQAB
         $response = TransactionQuery::process($env, time() . '', $publicKey, time() . '');
         $this->assertInstanceOf(TransactionQueryResponse::class, $response, "Wrong Data Type in execute in TransactionQueryProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('status', $arr, "Missing status Attribute in TransactionQueryProcess");
         $this->assertArrayHasKey('message', $arr, "Missing message Attribute in TransactionQueryProcess");
         $this->assertArrayHasKey('data', $arr, "Missing data Attribute in TransactionQueryProcess");
         $this->assertInstanceOf(MoMoJson::class, $response->getData(), "Wrong Data Type for data Attribute in TransactionQueryProcess -- Must be Json");
 
-        $jsonArr = $response->getData()->jsonSerialize();
+        $jsonArr = Converter::objectToArray($response->getData());
         $this->assertArrayHasKey('message', $jsonArr, "Missing message Attribute in JSON TransactionQueryProcess");
         $this->assertArrayHasKey('status', $jsonArr, "Missing status Attribute in JSON TransactionQueryProcess");
         $this->assertArrayHasKey('amount', $jsonArr, "Missing amount Attribute in JSON TransactionQueryProcess");

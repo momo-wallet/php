@@ -2,8 +2,6 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-
-use MService\Payment\Shared\Utils\MoMoException;
 use PHPUnit\Framework\TestCase;
 
 class EnvironmentTest extends TestCase
@@ -25,7 +23,8 @@ class EnvironmentTest extends TestCase
         $this->assertEquals("https://payment.momo.vn", $env->getMomoEndpoint(), 'Wrong MoMo Endpoint for Production Environment');
     }
 
-    public function testThrowException() {
+    public function testThrowException()
+    {
         $this->expectExceptionMessage('MoMo doesnt provide other environment: dev and prod');
         Environment::selectEnv('random');
     }

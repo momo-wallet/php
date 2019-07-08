@@ -8,10 +8,11 @@ use MService\Payment\PayGate\Models\RefundStatusResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class RefundStatus extends Process
 {
@@ -23,18 +24,16 @@ class RefundStatus extends Process
 
     public static function process($env, $orderId, $requestId)
     {
-        try {
-            echo '========================== START REFUND QUERY STATUS ==================', "\n";
+        $refundStatus = new RefundStatus($env);
 
-            $refundStatus = new RefundStatus($env);
+        try {
             $refundStatusRequest = $refundStatus->createRefundStatusRequest($orderId, $requestId);
             $refundStatusResponse = $refundStatus->execute($refundStatusRequest);
 
-            echo '========================== END REFUND QUERY STATUS ==================', "\n";
             return $refundStatusResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $refundStatus->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -47,9 +46,9 @@ class RefundStatus extends Process
             "&" . Parameter::ORDER_ID . "=" . $orderId .
             "&" . Parameter::REQUEST_TYPE . "=" . RequestType::QUERY_REFUND;
 
-        echo 'createRefundStatusRequest::rawDataBeforeHash::', $rawData, "\n";
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        echo 'createRefundStatusRequest::signature::' . $signature, "\n";
+        $this->logger->info("[RefundStatusRequest] rawData: " . $rawData
+            . ", [Signature] -> " . $signature);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -65,8 +64,8 @@ class RefundStatus extends Process
     public function execute(RefundStatusRequest $refundStatusRequest): array
     {
         try {
-            $data = json_encode($refundStatusRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_GATE_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($refundStatusRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -85,7 +84,7 @@ class RefundStatus extends Process
             return $arrResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
@@ -108,27 +107,17 @@ class RefundStatus extends Process
                 "&" . Parameter::LOCAL_MESSAGE . "=" . $refundStatusResponse->getLocalMessage() .
                 "&" . Parameter::REQUEST_TYPE . "=" . $refundStatusResponse->getRequestType();
 
-            echo '============================================', "\n";
-
-            echo "getrefundStatusResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
             $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "getrefundStatusResponse::partnerSignature::" . $signature . "\n";
-            echo "getrefundStatusResponse::momoSignature::" . $refundStatusResponse->getSignature() . "\n";
-
-            if ($refundStatusResponse->getErrorCode() != 0) {
-                echo "errorCode::", $refundStatusResponse->getErrorCode(), "\n";
-                echo "errorMessage::", $refundStatusResponse->getMessage(), "\n";
-                echo "localMessage::", $refundStatusResponse->getLocalMessage(), "\n";
-            }
-
-            echo '============================================', "\n";
+            $this->logger->info("[RefundTransaction] rawData: " . $rawHash
+                . ", [Signature] -> " . $signature
+                . ", [MoMoSignature] -> " . $refundStatusResponse->getSignature());
 
             if ($signature == $refundStatusResponse->getSignature())
                 return $refundStatusResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }

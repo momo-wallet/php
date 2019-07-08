@@ -6,6 +6,7 @@ use MService\Payment\Pay\Models\TransactionRefundRequest;
 use MService\Payment\Pay\Models\TransactionRefundResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 
@@ -27,7 +28,7 @@ class TransactionRefundTest extends TestCase
 
     public function testCreateTransactionRefundRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/refund", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -43,7 +44,7 @@ PfPrNwIDAQAB
         $request = $refund->createTransactionRefundRequest($requestId, 10000, $publicKey, '1562138427', '2305016460');
         $this->assertInstanceOf(TransactionRefundRequest::class, $request, "Wrong Data Type in createTransactionRefundRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in createTransactionRefundRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in createTransactionRefundRequest");
         $this->assertArrayHasKey('hash', $arr, "Missing hash Attribute in createTransactionRefundRequest");
@@ -53,7 +54,7 @@ PfPrNwIDAQAB
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/refund", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -67,7 +68,7 @@ PfPrNwIDAQAB
         $response = TransactionRefund::process($env, '1562138427', 10000, $publicKey, '1562138427', '2305016460');
         $this->assertInstanceOf(TransactionRefundResponse::class, $response, "Wrong Data Type in execute in TransactionRefundProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('status', $arr, "Missing status Attribute in TransactionRefundProcess");
         $this->assertArrayHasKey('message', $arr, "Missing message Attribute in TransactionRefundProcess");
         $this->assertArrayHasKey('partnerRefId', $arr, "Missing partnerRefId Attribute in TransactionRefundProcess");

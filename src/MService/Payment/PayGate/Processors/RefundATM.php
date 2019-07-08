@@ -8,10 +8,11 @@ use MService\Payment\PayGate\Models\RefundATMResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class RefundATM extends Process
 {
@@ -22,24 +23,16 @@ class RefundATM extends Process
 
     public static function process($env, $orderId, $requestId, $amount, $transId, $bankCode)
     {
-        try {
-            echo '========================== START ATM REFUND PROCESS ==================', "\n";
+        $refundATM = new RefundATM($env);
 
-            $refundATM = new RefundATM($env);
+        try {
             $refundATMRequest = $refundATM->createRefundATMRequest($orderId, $requestId, $amount, $transId, $bankCode);
             $refundATMResponse = $refundATM->execute($refundATMRequest);
 
-            if (!is_null($refundATMResponse) && $refundATMResponse->getErrorCode() != 0) {
-                echo "getrefundATMResponse::errorCode::", $refundATMResponse->getErrorCode(), "\n";
-                echo "getrefundATMResponse::errorMessage::", $refundATMResponse->getMessage(), "\n";
-                echo "getrefundATMResponse::localMessage::", $refundATMResponse->getLocalMessage(), "\n";
-            }
-
-            echo '========================== END ATM REFUND PROCESS ==================', "\n";
             return $refundATMResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $refundATM->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -55,9 +48,9 @@ class RefundATM extends Process
             "&" . Parameter::TRANS_ID . "=" . $transId .
             "&" . Parameter::REQUEST_TYPE . "=" . RequestType::REFUND_ATM;
 
-        echo 'createRefundATMRequest::rawDataBeforeHash::', $rawData, "\n";
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        echo 'createRefundATMRequest::signature::' . $signature, "\n";
+        $this->logger->info("[RefundATMRequest] rawData: " . $rawData
+            . ", [Signature] -> " . $signature);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -76,8 +69,8 @@ class RefundATM extends Process
     public function execute(RefundATMRequest $refundATMRequest)
     {
         try {
-            $data = json_encode($refundATMRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_GATE_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($refundATMRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -88,7 +81,7 @@ class RefundATM extends Process
             return $this->checkResponse($refundATMResponse);
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
@@ -109,15 +102,15 @@ class RefundATM extends Process
                 "&" . Parameter::LOCAL_MESSAGE . "=" . $refundATMResponse->getLocalMessage() .
                 "&" . Parameter::REQUEST_TYPE . "=" . $refundATMResponse->getRequestType();
 
-            echo "getrefundATMResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
             $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "getrefundATMResponse::partnerSignature::" . $signature . "\n";
-            echo "getrefundATMResponse::momoSignature::" . $refundATMResponse->getSignature() . "\n";
+            $this->logger->info("[RefundATMResponse] rawData: " . $rawHash
+                . ", [Signature] -> " . $signature
+                . ", [MoMoSignature] -> " . $refundATMResponse->getSignature());
 
             if ($signature != $refundATMResponse->getSignature())
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return $refundATMResponse;
     }

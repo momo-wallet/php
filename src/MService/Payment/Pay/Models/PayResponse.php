@@ -3,9 +3,7 @@
 
 namespace MService\Payment\Pay\Models;
 
-use JsonSerializable;
-
-class PayResponse implements JsonSerializable
+class PayResponse
 {
     private $status;
     private $message;
@@ -72,12 +70,6 @@ class PayResponse implements JsonSerializable
     public function setSignature($signature): void
     {
         $this->signature = $signature;
-    }
-
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return $vars;
     }
 
 }

@@ -6,6 +6,7 @@ use MService\Payment\PayGate\Models\RefundStatusRequest;
 use MService\Payment\PayGate\Models\RefundStatusResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 
@@ -28,7 +29,7 @@ class RefundStatusTest extends TestCase
 
     public function testCreateRefundStatusRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -37,7 +38,7 @@ class RefundStatusTest extends TestCase
         $request = $refundStatus->createRefundStatusRequest($orderId, $requestId);
         $this->assertInstanceOf(RefundStatusRequest::class, $request, "Wrong Data Type for createRefundStatusRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundStatusRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundStatusRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundStatusRequest");
@@ -51,7 +52,7 @@ class RefundStatusTest extends TestCase
 
     public function testProcessSuccessList()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $responseList = RefundStatus::process($env, '1561972963', '1561972963');
@@ -60,7 +61,7 @@ class RefundStatusTest extends TestCase
         foreach ($responseList as $index => $response) {
             $this->assertInstanceOf(RefundStatusResponse::class, $response, "Wrong Data Type in execute in RefundStatusProcess");
 
-            $arr = $response->jsonSerialize();
+            $arr = Converter::objectToArray($response);
             $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in RefundStatusResponse");
             $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in RefundStatusResponse");
             $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in RefundStatusResponse");
@@ -82,7 +83,7 @@ class RefundStatusTest extends TestCase
 
     public function testProcessEmptyList()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $responseList = RefundStatus::process($env, '1562148833', '1562148833');

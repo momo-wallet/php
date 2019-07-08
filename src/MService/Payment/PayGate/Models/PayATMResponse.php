@@ -23,12 +23,6 @@ class PayATMResponse extends CaptureMoMoResponse
         $this->setRequestType(RequestType::PAY_WITH_ATM);
     }
 
-    public function jsonSerialize()
-    {
-        $vars = get_object_vars($this);
-        return array_merge($vars, parent::jsonSerialize());
-    }
-
     /**
      * @return mixed
      */

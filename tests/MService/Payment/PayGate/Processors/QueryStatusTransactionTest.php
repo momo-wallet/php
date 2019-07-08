@@ -6,6 +6,7 @@ use MService\Payment\PayGate\Models\QueryStatusRequest;
 use MService\Payment\PayGate\Models\QueryStatusResponse;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 class QueryStatusTransactionTest extends TestCase
@@ -27,7 +28,7 @@ class QueryStatusTransactionTest extends TestCase
 
     public function testCreateQueryStatusRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
         $orderId = time() . "";
         $requestId = time() . "";
@@ -36,7 +37,7 @@ class QueryStatusTransactionTest extends TestCase
         $request = $query->createQueryStatusRequest($orderId, $requestId);
         $this->assertInstanceOf(QueryStatusRequest::class, $request, "Wrong Data Type for createQueryStatusRequest");
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in QueryStatusRequest");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in QueryStatusRequest");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in QueryStatusRequest");
@@ -49,13 +50,13 @@ class QueryStatusTransactionTest extends TestCase
 
     public function testProcessTransInit()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = QueryStatusTransaction::process($env, '1562147883', '1562147883');
         $this->assertInstanceOf(QueryStatusResponse::class, $response, "Wrong Data Type in execute in QueryStatusTransactionProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in QueryStatusResponse");
@@ -78,13 +79,13 @@ class QueryStatusTransactionTest extends TestCase
 
     public function testProcessFailure()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = QueryStatusTransaction::process($env, time() . '', time() . '');
         $this->assertInstanceOf(QueryStatusResponse::class, $response, "Wrong Data Type in execute in QueryStatusTransactionProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in QueryStatusResponse");
@@ -104,13 +105,13 @@ class QueryStatusTransactionTest extends TestCase
 
     public function testProcessSuccess()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+        $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
             'development');
 
         $response = QueryStatusTransaction::process($env, '1561972963', '1561972963');
         $this->assertInstanceOf(QueryStatusResponse::class, $response, "Wrong Data Type in execute in QueryStatusTransactionProcess");
 
-        $arr = $response->jsonSerialize();
+        $arr = Converter::objectToArray($response);
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('accessKey', $arr, "Missing accessKey Attribute in QueryStatusResponse");
         $this->assertArrayHasKey('requestId', $arr, "Missing requestId Attribute in QueryStatusResponse");

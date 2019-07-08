@@ -6,6 +6,7 @@ use MService\Payment\Pay\Models\AppPayRequest;
 use MService\Payment\Pay\Processors\AppPay;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\Shared\Utils\Converter;
 use PHPUnit\Framework\TestCase;
 
 class AppPayTest extends TestCase
@@ -27,7 +28,7 @@ class AppPayTest extends TestCase
 
     public function testCreateAppPayRequest()
     {
-        $env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+        $env = new Environment("https://test-payment.momo.vn/pay/app", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
             'development');
         $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
@@ -42,7 +43,7 @@ PfPrNwIDAQAB
         $appPay = new AppPay($env);
         $request = $appPay->createAppPayRequest(50000, "sugkvli", $publicKey, '0985659393', $partnerRefId);
 
-        $arr = $request->jsonSerialize();
+        $arr = Converter::objectToArray($request);
         $this->assertInstanceOf(AppPayRequest::class, $request, "Wrong Data Type in createAppPayRequest");
         $this->assertArrayHasKey('partnerCode', $arr, "Missing partnerCode Attribute in AppPayRequest");
         $this->assertArrayHasKey('partnerRefId', $arr, "Missing partnerRefId Attribute in AppPayRequest");

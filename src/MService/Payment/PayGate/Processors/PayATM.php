@@ -8,10 +8,11 @@ use MService\Payment\PayGate\Models\PayATMResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\Constants\RequestType;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class PayATM extends Process
 {
@@ -23,28 +24,16 @@ class PayATM extends Process
 
     public static function process($env, $orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode)
     {
-        try {
-            echo '========================== START ATM PAYMENT ==================', "\n";
+        $payATM = new PayATM($env);
 
-            $payATM = new PayATM($env);
+        try {
             $payATMRequest = $payATM->createPayATMRequest($orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode);
             $payATMResponse = $payATM->execute($payATMRequest);
 
-            if (!is_null($payATMResponse)) {
-                if ($payATMResponse->getErrorCode() != 0) {
-                    echo "getPayATMMoMoResponse::errorCode::" . $payATMResponse->getErrorCode() . "\n";
-                    echo "getPayATMMoMoResponse::message::" . $payATMResponse->getMessage() . "\n";
-                    echo "getPayATMMoMoResponse::localMessage::" . $payATMResponse->getLocalMessage() . "\n";
-                } else {
-                    echo "getPayATMMoMoResponse::payUrl::" . $payATMResponse->getPayUrl() . "\n";
-                }
-            }
-
-            echo '========================== END ATM PAYMENT ==================', "\n";
             return $payATMResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $payATM->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -63,9 +52,10 @@ class PayATM extends Process
             "&" . Parameter::EXTRA_DATA . "=" . $extraData .
             "&" . Parameter::REQUEST_TYPE . "=" . RequestType::PAY_WITH_ATM;
 
-        echo 'createPayATMRequest::rawDataBeforeHash::', $rawData, "\n";
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        echo 'createPayATMRequest::signature::' . $signature, "\n";
+
+        $this->logger->info('[PayATMRequest] rawData: ' . $rawData
+            . ', [Signature] -> ' . $signature);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -87,9 +77,9 @@ class PayATM extends Process
     public function execute(PayATMRequest $payATMRequest)
     {
         try {
-            $data = json_encode($payATMRequest);
+            $data = Converter::objectToJsonStrNoNull($payATMRequest);
 
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_GATE_URI, $data);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -101,7 +91,7 @@ class PayATM extends Process
             return $this->checkResponse($payATMResponse);
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -120,17 +110,18 @@ class PayATM extends Process
                 "&" . Parameter::LOCAL_MESSAGE . "=" . $payATMResponse->getLocalMessage() .
                 "&" . Parameter::REQUEST_TYPE . "=" . $payATMResponse->getRequestType();
 
-            echo "getPayATMMoMoResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
             $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "getPayATMMoMoResponse::partnerSignature::" . $signature . "\n";
-            echo "getPayATMMoMoResponse::momoSignature::" . $payATMResponse->getSignature() . "\n";
+
+            $this->logger->info("[PayATMResponse] rawData: " . $rawHash
+                . ", [Signature] -> " . $signature
+                . ", [MoMoSignature] -> " . $payATMResponse->getSignature());
 
             if ($signature == $payATMResponse->getSignature())
                 return $payATMResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return $payATMResponse;
     }

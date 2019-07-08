@@ -7,10 +7,11 @@ use MService\Payment\Pay\Models\AppPayRequest;
 use MService\Payment\Pay\Models\AppPayResponse;
 use MService\Payment\Shared\Constants\Parameter;
 use MService\Payment\Shared\SharedModels\Environment;
-use MService\Payment\Shared\SharedModels\Process;
+use MService\Payment\Shared\Utils\Converter;
 use MService\Payment\Shared\Utils\Encoder;
 use MService\Payment\Shared\Utils\HttpClient;
 use MService\Payment\Shared\Utils\MoMoException;
+use MService\Payment\Shared\Utils\Process;
 
 class AppPay extends Process
 {
@@ -23,19 +24,15 @@ class AppPay extends Process
     public static function process($env, $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
                                    $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null)
     {
+        $appPay = new AppPay($env);
+
         try {
-            echo '========================== START APP IN APP PAYMENT PROCESS ==================', "\n";
-
-            $appPay = new AppPay($env);
-            $appPayRequest = $appPay->createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version, $payType, $description,
-                $partnerName, $partnerTransId, $storeId, $storeName);
+            $appPayRequest = $appPay->createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version, $payType, $description, $partnerName, $partnerTransId, $storeId, $storeName);
             $appPayResponse = $appPay->execute($appPayRequest);
-
-            echo '========================== END APP IN APP PAYMENT PROCESS ==================', "\n";
             return $appPayResponse;
 
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $appPay->logger->error($exception->getErrorMessage());
         }
     }
 
@@ -53,11 +50,9 @@ class AppPay extends Process
             Parameter::STORE_NAME => $storeName
         );
 
-        echo 'createAppPayRequest::rawDataBeforeHash::', json_encode(array_filter($jsonArr, function ($var) {
-            return !is_null($var);
-        })), "\n";
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        echo 'createAppPayRequest::hashRSA::' . $hash, "\n";
+        $this->logger->info("[AppPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+            . ', [Signature] -> ' . $hash);
 
         $arr = array(
             Parameter::PARTNER_CODE => $this->getPartnerInfo()->getPartnerCode(),
@@ -76,8 +71,8 @@ class AppPay extends Process
     public function execute(AppPayRequest $appPayRequest)
     {
         try {
-            $data = json_encode($appPayRequest);
-            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), Parameter::PAY_APP_URI, $data);
+            $data = Converter::objectToJsonStrNoNull($appPayRequest);
+            $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data);
 
             if ($response->getStatusCode() != 200) {
                 throw new MoMoException("Error API");
@@ -87,7 +82,7 @@ class AppPay extends Process
 
             return $this->checkResponse($appPayResponse);
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
@@ -96,30 +91,23 @@ class AppPay extends Process
     {
         try {
 
-            if ($appPayResponse->getStatus() != 0) {
-                echo "getAppPayResponse::errorCode::", $appPayResponse->getStatus(), "\n";
-                echo "getAppPayResponse::errorMessage::", $appPayResponse->getMessage(), "\n";
-            }
-            echo "getAppPayResponse::transid::", $appPayResponse->getTransid(), "\n";
-            echo "getAppPayResponse::amount::", $appPayResponse->getAmount(), "\n";
-
             //check signature
             $rawHash = Parameter::STATUS . "=" . $appPayResponse->getStatus() .
                 "&" . Parameter::MESSAGE . "=" . $appPayResponse->getMessage() .
                 "&" . Parameter::AMOUNT . "=" . $appPayResponse->getAmount() .
                 "&" . Parameter::PAY_TRANS_ID . "=" . $appPayResponse->getTransid();
 
-            echo "getAppPayResponse::partnerRawDataBeforeHash::" . $rawHash . "\n";
             $signature = hash_hmac("sha256", $rawHash, $this->getPartnerInfo()->getSecretKey());
-            echo "getAppPayResponse::partnerSignature::" . $signature . "\n";
-            echo "getAppPayResponse::momoSignature::" . $appPayResponse->getSignature() . "\n";
+            $this->logger->info("[AppPayResponse] rawData: " . $rawHash
+                . ', [Signature] -> ' . $signature
+                . ', [MoMoSignature] -> ' . $appPayResponse->getSignature());
 
             if ($signature == $appPayResponse->getSignature())
                 return $appPayResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            echo $exception->getErrorMessage();
+            $this->logger->error($exception->getErrorMessage());
         }
         return null;
     }
