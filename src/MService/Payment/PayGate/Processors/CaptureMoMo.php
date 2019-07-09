@@ -19,7 +19,7 @@ class CaptureMoMo extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl)
+    public static function process(Environment $env, $orderId, $orderInfo, string $amount, $extraData, $requestId, $notifyUrl, $returnUrl)
     {
         $captureMoMoWallet = new CaptureMoMo($env);
 
@@ -33,7 +33,7 @@ class CaptureMoMo extends Process
         }
     }
 
-    public function createCaptureMoMoRequest($orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl): CaptureMoMoRequest
+    public function createCaptureMoMoRequest($orderId, $orderInfo, string $amount, $extraData, $requestId, $notifyUrl, $returnUrl): CaptureMoMoRequest
     {
 
         $rawData = Parameter::PARTNER_CODE . "=" . $this->getPartnerInfo()->getPartnerCode() .

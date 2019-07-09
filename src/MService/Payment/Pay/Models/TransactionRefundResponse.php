@@ -63,7 +63,7 @@ class TransactionRefundResponse extends PayResponse
     /**
      * @param mixed $amount
      */
-    public function setAmount($amount): void
+    public function setAmount(int $amount): void
     {
         $this->amount = $amount;
     }

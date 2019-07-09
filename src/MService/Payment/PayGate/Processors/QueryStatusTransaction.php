@@ -21,7 +21,7 @@ class QueryStatusTransaction extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $requestId)
+    public static function process(Environment $env, $orderId, $requestId)
     {
         $queryStatusTransaction = new QueryStatusTransaction($env);
 

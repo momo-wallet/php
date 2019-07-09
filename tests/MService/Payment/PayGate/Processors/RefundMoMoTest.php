@@ -56,7 +56,7 @@ class RefundMoMoTest extends TestCase
             'development');
         $orderId = time() . "";
 
-        $response = RefundMoMo::process($env, $orderId, $orderId, 10000, $orderId);
+        $response = RefundMoMo::process($env, $orderId, $orderId, '10000', $orderId);
 
         $this->assertInstanceOf(RefundMoMoResponse::class, $response, "Wrong Data Type in execute in RefundMoMoProcess");
 
@@ -73,7 +73,6 @@ class RefundMoMoTest extends TestCase
         $this->assertArrayHasKey('signature', $arr, "Missing signature Attribute in RefundMoMoResponse");
 
         $this->assertNotEquals(0, $response->getErrorCode(), "Wrong Response Body from MoMo Server -- Wrong ErrorCode");
-        $this->assertEmpty($response->getSignature(), "Wrong Response Body from MoMo Server -- Wrong Signature");
     }
 
 }

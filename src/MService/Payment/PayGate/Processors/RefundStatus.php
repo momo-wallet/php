@@ -22,7 +22,7 @@ class RefundStatus extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $requestId)
+    public static function process(Environment $env, $orderId, $requestId)
     {
         $refundStatus = new RefundStatus($env);
 

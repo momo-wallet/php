@@ -21,7 +21,7 @@ class PaymentConfirmation extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber = null, $description = null)
+    public static function process(Environment $env, $partnerRefId, $requestType, $momoTransId, $requestId, $customerNumber = null, $description = null)
     {
         $paymentConfirmation = new PaymentConfirmation($env);
 

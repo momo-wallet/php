@@ -22,7 +22,7 @@ class POSPay extends Process
     }
 
     public
-    static function process($env, $paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null)
+    static function process(Environment $env, $paymentCode, int $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null)
     {
         $posPay = new POSPay($env);
 
@@ -36,7 +36,7 @@ class POSPay extends Process
         }
     }
 
-    public function createPOSPayRequest($paymentCode, $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null): POSPayRequest
+    public function createPOSPayRequest($paymentCode, int $amount, $publicKey, $partnerRefId, $description = null, $storeId = null, $storeName = null): POSPayRequest
     {
 
         $jsonArr = array(

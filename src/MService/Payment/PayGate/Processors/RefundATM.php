@@ -21,7 +21,7 @@ class RefundATM extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $requestId, $amount, $transId, $bankCode)
+    public static function process(Environment $env, $orderId, $requestId, string $amount, $transId, $bankCode)
     {
         $refundATM = new RefundATM($env);
 
@@ -36,7 +36,7 @@ class RefundATM extends Process
         }
     }
 
-    public function createRefundATMRequest($orderId, $requestId, $amount, $transId, $bankCode): RefundATMRequest
+    public function createRefundATMRequest($orderId, $requestId, string $amount, $transId, $bankCode): RefundATMRequest
     {
 
         $rawData = Parameter::PARTNER_CODE . "=" . $this->getPartnerInfo()->getPartnerCode() .

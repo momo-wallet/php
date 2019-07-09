@@ -21,7 +21,7 @@ class TransactionRefund extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null)
+    public static function process(Environment $env, $requestId, int $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null)
     {
         $transactionRefund = new TransactionRefund($env);
 
@@ -35,7 +35,7 @@ class TransactionRefund extends Process
         }
     }
 
-    public function createTransactionRefundRequest($requestId, $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null): TransactionRefundRequest
+    public function createTransactionRefundRequest($requestId, int $amount, $publicKey, $partnerRefId, $momoTransId, $storeId = null, $description = null): TransactionRefundRequest
     {
 
         $jsonArr = array(

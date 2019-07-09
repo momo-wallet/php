@@ -108,7 +108,7 @@ class AIORequest
     /**
      * @param mixed $amount
      */
-    public function setAmount($amount): void
+    public function setAmount(string $amount): void
     {
         $this->amount = $amount;
     }

@@ -21,7 +21,7 @@ class RefundMoMo extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $requestId, $amount, $transId)
+    public static function process(Environment $env, $orderId, $requestId, string $amount, $transId)
     {
         $refundMoMo = new RefundMoMo($env);
 
@@ -36,7 +36,7 @@ class RefundMoMo extends Process
         }
     }
 
-    public function createRefundMoMoRequest($orderId, $requestId, $amount, $transId): RefundMoMoRequest
+    public function createRefundMoMoRequest($orderId, $requestId, string $amount, $transId): RefundMoMoRequest
     {
 
         $rawData = Parameter::PARTNER_CODE . "=" . $this->getPartnerInfo()->getPartnerCode() .

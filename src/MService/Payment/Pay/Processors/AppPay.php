@@ -21,7 +21,7 @@ class AppPay extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
+    public static function process(Environment $env, int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
                                    $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null)
     {
         $appPay = new AppPay($env);
@@ -36,7 +36,7 @@ class AppPay extends Process
         }
     }
 
-    public function createAppPayRequest($amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
+    public function createAppPayRequest(int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
                                         $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null): AppPayRequest
     {
 

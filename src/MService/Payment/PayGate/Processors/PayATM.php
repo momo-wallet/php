@@ -22,7 +22,7 @@ class PayATM extends Process
         parent::__construct($environment);
     }
 
-    public static function process($env, $orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode)
+    public static function process(Environment $env, $orderId, $orderInfo, string $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode)
     {
         $payATM = new PayATM($env);
 
@@ -37,7 +37,7 @@ class PayATM extends Process
         }
     }
 
-    public function createPayATMRequest($orderId, $orderInfo, $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode): PayATMRequest
+    public function createPayATMRequest($orderId, $orderInfo, string $amount, $extraData, $requestId, $notifyUrl, $returnUrl, $bankCode): PayATMRequest
     {
 
         $rawData = Parameter::PARTNER_CODE . "=" . $this->getPartnerInfo()->getPartnerCode() .

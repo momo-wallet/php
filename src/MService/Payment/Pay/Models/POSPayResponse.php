@@ -26,7 +26,7 @@ class POSPayResponse
     /**
      * @param mixed $status
      */
-    public function setStatus($status): void
+    public function setStatus(int $status): void
     {
         $this->status = $status;
     }

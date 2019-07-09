@@ -61,7 +61,7 @@ class CaptureMoMoTest extends TestCase
         $orderId = time() . "";
         $requestId = time() . "";
 
-        $response = CaptureMoMo::process($env, $orderId, "Pay With MoMo", "50000", "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
+        $response = CaptureMoMo::process($env, $orderId, "Pay With MoMo", '50000', "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
         $this->assertInstanceOf(CaptureMoMoResponse::class, $response, "Wrong Data Type in execute in CaptureMoMoProcess");
 
         $arr = Converter::objectToArray($response);
