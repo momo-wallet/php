@@ -35,7 +35,7 @@ https://developers.momo.vn
 MoMo provides 2 environments for integration: development(```dev```) and production(```prod```). 
 The model for environment is located at ```MService\Payment\Shared\SharedModels\Environment```
 
-Example configuration is provided in ```.env.example``` and sample code on how to set up your environment can be found in ```SampleEnvironment.php``` file
+Example configuration is provided in ```.env.example``` and sample code on how to set up your environment can be found in ```SampleEnvironment.php``` file. Please create your own `.env` file and then copy contents from `.env.example` to that file (or make any necessary changes). Please note that `selectEnvironment()` is just a sample code and NOT part of the actual library.
 
 By default, log is turned off. But you can use `MoMoLogger` by setting the `$loggingOff` property to `false` during environment setup. 
 
