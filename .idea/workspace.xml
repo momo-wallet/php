@@ -2,28 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57725b12-2608-4b63-be74-8eb6a3e25f1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/SampleEnvironment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Log.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,83 +39,97 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/composer.lock">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/config/SampleEnvironment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <folding>
+                <element signature="e#7#25#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-390">
+              <caret line="24" column="124" selection-start-line="24" selection-start-column="119" selection-end-line="24" selection-end-column="124" />
+              <folding>
+                <element signature="e#57#75#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/.env.example">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+              <caret selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php">
+        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="74" column="114" selection-start-line="74" selection-start-column="114" selection-end-line="74" selection-end-column="114" />
+            <state relative-caret-position="452">
+              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php">
+        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="69" column="114" selection-start-line="69" selection-start-column="114" selection-end-line="69" selection-end-column="114" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="70" column="114" selection-start-line="70" selection-start-column="114" selection-end-line="70" selection-end-column="114" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="66" column="114" selection-start-line="66" selection-start-column="114" selection-end-line="66" selection-end-column="114" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="67" column="114" selection-start-line="67" selection-start-column="114" selection-end-line="67" selection-end-column="114" />
+            <state relative-caret-position="180">
+              <caret line="18" column="74" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="13" selection-start-line="13" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+            <state relative-caret-position="15">
+              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -125,12 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>real</find>
-      <find>responseDate</find>
-      <find>$responseDate</find>
-      <find>momo_wall</find>
-      <find>loader.php</find>
-      <find>CreateCheck</find>
       <find>SquareConnect\Model\Check</find>
       <find>createRefund</find>
       <find>autoload</find>
@@ -155,6 +162,12 @@
       <find>// TODO: Change the autogenerated stub</find>
       <find>Http</find>
       <find>Client</find>
+      <find>php</find>
+      <find>DEV</find>
+      <find>),</find>
+      <find>getenv</find>
+      <find>selectEnv</find>
+      <find>include</find>
     </findStrings>
     <replaceStrings>
       <replace>namespace MoMo\Payment</replace>
@@ -180,6 +193,9 @@
       <replace>error</replace>
       <replace>use MService\Payment\Shared\Utils\Process;</replace>
       <replace>);</replace>
+      <replace>PROD</replace>
+      <replace>'),</replace>
+      <replace>$_ENV</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/tests/MService/Payment</dir>
@@ -192,16 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundRequest.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundResponse.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/PaymentConfirmationResponse.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionQueryResponse.php" />
-        <option value="$PROJECT_DIR$/loader.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundStatusTest.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIORequest.php" />
@@ -210,7 +216,6 @@
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Logger.php" />
         <option value="$PROJECT_DIR$/Logger.php" />
         <option value="$PROJECT_DIR$/log/Logger.php" />
@@ -220,10 +225,7 @@
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Log.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" />
-        <option value="$PROJECT_DIR$/src/loader.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Log.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoLog.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLog.php" />
@@ -236,13 +238,27 @@
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" />
+        <option value="$PROJECT_DIR$/config/.env" />
+        <option value="$PROJECT_DIR$/config/social.php" />
+        <option value="$PROJECT_DIR$/src/.env.example" />
+        <option value="$PROJECT_DIR$/src/loader.php" />
+        <option value="$PROJECT_DIR$/src/config/environment.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/config/sampleSelectEnvironment.php" />
+        <option value="$PROJECT_DIR$/src/config/SampleEnvironment.php" />
+        <option value="$PROJECT_DIR$/src/config/.env" />
+        <option value="$PROJECT_DIR$/src/config/.env.example" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" />
       </list>
     </option>
   </component>
@@ -292,12 +308,14 @@
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/bramus/monolog-colored-line-formatter" />
       <path value="$PROJECT_DIR$/vendor/bramus/ansi-php" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="254" />
+    <option name="x" value="281" />
     <option name="y" value="23" />
-    <option name="width" value="1810" />
+    <option name="width" value="1639" />
     <option name="height" value="971" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -325,6 +343,12 @@
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
               <item name="payment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="payment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="payment" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="MService" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -340,24 +364,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="MService" type="462c0819:PsiDirectoryNode" />
               <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="Pay" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="payment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="payment" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MService" type="462c0819:PsiDirectoryNode" />
-              <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="Pay" type="462c0819:PsiDirectoryNode" />
-              <item name="Processors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="payment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="payment" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MService" type="462c0819:PsiDirectoryNode" />
-              <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="Shared" type="462c0819:PsiDirectoryNode" />
+              <item name="PayGate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
@@ -366,7 +373,6 @@
               <item name="MService" type="462c0819:PsiDirectoryNode" />
               <item name="Payment" type="462c0819:PsiDirectoryNode" />
               <item name="Shared" type="462c0819:PsiDirectoryNode" />
-              <item name="Constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
@@ -380,15 +386,6 @@
             <path>
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
               <item name="payment" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MService" type="462c0819:PsiDirectoryNode" />
-              <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="Shared" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="payment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="payment" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -410,7 +407,7 @@
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="MService" type="462c0819:PsiDirectoryNode" />
               <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="PayGate" type="462c0819:PsiDirectoryNode" />
+              <item name="Pay" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
@@ -418,7 +415,8 @@
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="MService" type="462c0819:PsiDirectoryNode" />
               <item name="Payment" type="462c0819:PsiDirectoryNode" />
-              <item name="Shared" type="462c0819:PsiDirectoryNode" />
+              <item name="Pay" type="462c0819:PsiDirectoryNode" />
+              <item name="Processors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -448,16 +446,16 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels" />
-      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/Utils" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/log" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/MService/Payment/MService/Payment" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/config" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels" />
+      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/Utils" />
+      <recent name="$PROJECT_DIR$/log" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -472,12 +470,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
-    <configuration name="TestLogger.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/payment/log/Psr/Log/Test/TestLogger.php" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="PayGate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner directory="$PROJECT_DIR$/tests/MService/Payment/PayGate" />
+  <component name="RunManager" selected="PHP Script.PayGate.php">
+    <configuration name="EnvironmentTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MService\Payment\Shared\SharedModels\EnvironmentTest" file="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -487,16 +482,22 @@
     <configuration name="MoMoLogger.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php">
       <method v="2" />
     </configuration>
-    <configuration name="MoMoLogger.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php">
+    <configuration name="PayGate.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="SampleEnvironment.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/config/SampleEnvironment.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="loader.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/loader.php">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.PayGate.php" />
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.PayGate" />
-        <item itemvalue="PHP Script.MoMoLogger.php" />
-        <item itemvalue="PHP Script.MoMoLogger.php" />
-        <item itemvalue="JavaScript Debug.TestLogger.php" />
+        <item itemvalue="PHP Script.SampleEnvironment.php" />
+        <item itemvalue="PHPUnit.EnvironmentTest" />
+        <item itemvalue="PHP Script.loader.php" />
       </list>
     </recent_temporary>
   </component>
@@ -531,20 +532,14 @@
       <workItem from="1562324524232" duration="379000" />
       <workItem from="1562552906151" duration="20502000" />
       <workItem from="1562579926587" duration="5670000" />
-      <workItem from="1562585762244" duration="36000" />
+      <workItem from="1562585762244" duration="234000" />
+      <workItem from="1562639109878" duration="343000" />
+      <workItem from="1562640032618" duration="61000" />
+      <workItem from="1562640102773" duration="4200000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="tests - 2019.07.08 at 16h 53m 14s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2019.07.08 at 16h 54m 24s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2019.07.08 at 16h 57m 00s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="tests - 2019.07.08 at 18h 21m 03s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
@@ -566,9 +561,18 @@
     <history-entry file="tests - 2019.07.08 at 18h 34m 43s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="EnvironmentTest - 2019.07.09 at 10h 40m 04s.xml">
+      <configuration name="EnvironmentTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tests - 2019.07.09 at 10h 49m 38s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tests - 2019.07.09 at 10h 49m 53s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79012000" />
+    <option name="totallyTimeSpent" value="83814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -580,15 +584,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="254" y="23" width="1810" height="971" extended-state="0" />
+    <frame x="281" y="23" width="1639" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.25339368" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.2899186" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.2457971" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.25233644" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33411214" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26051402" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -596,7 +600,7 @@
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32918552" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3084112" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3084112" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32943925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -627,98 +631,6 @@
     <SUITE FILE_PATH="coverage/payment$tests.xml" NAME="tests Coverage Results" MODIFIED="1562314482733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.php_cs.dist">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.phpunit.result.cache">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/ChangeLog-7.5.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/composer.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/Test/TestLogger.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="71" column="30" lean-forward="true" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/Test/LoggerInterfaceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/InvalidArgumentException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/LoggerAwareTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/LoggerAwareInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/NullLogger.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/LogLevel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/LoggerTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/psr/log/Psr/Log/LoggerInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-349">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/psr/log/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -743,13 +655,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/phpunit.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/PartnerInfo.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -853,23 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="67" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
-          <folding>
-            <element signature="e#57#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
@@ -881,6 +769,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
           <caret line="69" column="114" selection-start-line="69" selection-start-column="114" selection-end-line="69" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/basic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="144" column="19" selection-start-line="144" selection-start-column="19" selection-end-line="144" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -912,9 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
@@ -925,10 +824,149 @@
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/config/social.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Constants/RequestType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Constants/Parameter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/vlucas/phpdotenv/src/Parser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="152" column="59" lean-forward="true" selection-start-line="152" selection-start-column="59" selection-end-line="152" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/vlucas/phpdotenv/src/Dotenv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2175">
+          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="792" column="9" selection-start-line="792" selection-start-column="9" selection-end-line="792" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/vlucas/phpdotenv/src/Loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="74" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+          <caret selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-390">
+          <caret line="24" column="124" selection-start-line="24" selection-start-column="119" selection-end-line="24" selection-end-column="124" />
+          <folding>
+            <element signature="e#57#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/SampleEnvironment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#7#25#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" selection-start-line="13" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

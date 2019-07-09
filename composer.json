@@ -26,7 +26,8 @@
         "phpunit/phpunit": "^8",
         "psr/log":"^1.0.1",
         "monolog/monolog": "*",
-        "bramus/monolog-colored-line-formatter": "3.0"
+        "bramus/monolog-colored-line-formatter": "3.0",
+        "vlucas/phpdotenv": "*"
     },
     "suggest": {
         "ext-json":  "*",

@@ -65,7 +65,9 @@ class QRNotifyTest extends TestCase
   \"storeId\": \"store001\"
 }";
 
-        $qrNotify = new QRNotify(Environment::selectEnv('dev'));
+        $env = new Environment("teehee", new PartnerInfo("TNWFx9JWayevKPiB8LyTgODiCSrjstXN", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+            'testing');
+        $qrNotify = new QRNotify($env);
         $request = $qrNotify->getQRNotificationFromMoMo($data);
 
         $this->assertNotInstanceOf(QRNotificationRequest::class, $request, "Wrong Verification Process for MoMo QR Notification");

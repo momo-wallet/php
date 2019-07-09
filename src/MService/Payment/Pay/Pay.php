@@ -1,6 +1,7 @@
 <?php
 
-include_once "../../../../loader.php";
+//include_once "../../../loader.php";
+//include_once "../../../../vendor/autoload.php";
 
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
