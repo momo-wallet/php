@@ -5,9 +5,9 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use MService\Payment\Shared\Utils\MoMoException;
 
-require_once '../../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
-$dotenv = Dotenv::create(__DIR__);
+$dotenv = Dotenv::create(__DIR__ . "/..");
 $dotenv->load();
 
 class SampleEnvironment
