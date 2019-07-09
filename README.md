@@ -21,7 +21,7 @@ For development purposes, we use phpunit/phpunit for testing, monolog/monolog fo
 
 Please check the composer.json file for detailed information on libraries for development as well as suggested packages
 
-###Installing
+### Installing
 Make sure you have the correct PHP version and Composer installed. 
 Then, simply clone the repo to your chosen IDEA and set up Composer and have the required packages. 
  
