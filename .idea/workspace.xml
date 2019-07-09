@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57725b12-2608-4b63-be74-8eb6a3e25f1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/config/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/SampleEnvironment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,28 +63,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
               <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/POSPayTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="74" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -116,29 +80,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="405">
+              <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            <state relative-caret-position="420">
+              <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpunit.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SquareConnect\Model\Check</find>
       <find>createRefund</find>
       <find>autoload</find>
       <find>phpunit</find>
@@ -168,6 +145,7 @@
       <find>getenv</find>
       <find>selectEnv</find>
       <find>include</find>
+      <find>require</find>
     </findStrings>
     <replaceStrings>
       <replace>namespace MoMo\Payment</replace>
@@ -249,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/.env.example" />
         <option value="$PROJECT_DIR$/src/loader.php" />
         <option value="$PROJECT_DIR$/src/config/environment.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/config/sampleSelectEnvironment.php" />
         <option value="$PROJECT_DIR$/src/config/SampleEnvironment.php" />
         <option value="$PROJECT_DIR$/src/config/.env" />
@@ -259,6 +236,7 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -322,11 +300,21 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -382,6 +370,15 @@
               <item name="Payment" type="462c0819:PsiDirectoryNode" />
               <item name="Shared" type="462c0819:PsiDirectoryNode" />
               <item name="SharedModels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="payment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="payment" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="MService" type="462c0819:PsiDirectoryNode" />
+              <item name="Payment" type="462c0819:PsiDirectoryNode" />
+              <item name="Shared" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="payment" type="b2602c69:ProjectViewProjectNode" />
@@ -470,7 +467,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Script.PayGate.php">
+  <component name="RunManager" selected="PHPUnit.tests">
     <configuration name="EnvironmentTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="MService\Payment\Shared\SharedModels\EnvironmentTest" file="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" scope="Class" />
       <method v="2" />
@@ -493,8 +490,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHP Script.PayGate.php" />
         <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHP Script.PayGate.php" />
         <item itemvalue="PHP Script.SampleEnvironment.php" />
         <item itemvalue="PHPUnit.EnvironmentTest" />
         <item itemvalue="PHP Script.loader.php" />
@@ -535,14 +532,11 @@
       <workItem from="1562585762244" duration="234000" />
       <workItem from="1562639109878" duration="343000" />
       <workItem from="1562640032618" duration="61000" />
-      <workItem from="1562640102773" duration="4200000" />
+      <workItem from="1562640102773" duration="4788000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="tests - 2019.07.08 at 18h 21m 03s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="tests - 2019.07.08 at 18h 22m 30s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
@@ -570,9 +564,12 @@
     <history-entry file="tests - 2019.07.09 at 10h 49m 53s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="tests - 2019.07.09 at 10h 58m 43s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83814000" />
+    <option name="totallyTimeSpent" value="84402000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -592,7 +589,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.25233644" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26051402" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26051402" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -600,7 +597,7 @@
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32918552" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3084112" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3084112" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32943925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -651,9 +648,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpunit.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/PartnerInfo.php">
@@ -814,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -922,23 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="24" column="124" selection-start-line="24" selection-start-column="119" selection-end-line="24" selection-end-column="124" />
-          <folding>
-            <element signature="e#57#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -965,8 +935,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="405">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-390">
+          <caret line="24" column="124" selection-start-line="24" selection-start-column="119" selection-end-line="24" selection-end-column="124" />
+          <folding>
+            <element signature="e#57#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
