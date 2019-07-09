@@ -22,7 +22,7 @@ class Environment
      * @param $target
      *
      */
-    public function __construct($momoEndpoint, $partnerInfo, $target, $channelName = 'MoMoDefault', bool $loggingOff = false, array $handlers = array(), array $processors = array())
+    public function __construct($momoEndpoint, $partnerInfo, $target, $channelName = 'MoMoDefault', bool $loggingOff = true, array $handlers = array(), array $processors = array())
     {
         $this->momoEndpoint = $momoEndpoint;
         $this->partnerInfo = $partnerInfo;

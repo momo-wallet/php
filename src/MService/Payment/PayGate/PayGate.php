@@ -11,13 +11,14 @@ use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use MService\Payment\Shared\Utils\HttpClient;
 
-//include_once "../../../loader.php";
-//include_once "../../../../vendor/autoload.php";
+include_once "../../../loader.php";
+include_once "../../../../vendor/autoload.php";
+
 $orderId = time() . "";
 $requestId = time() . "";
 
 $env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
-    'development');
+    'development', 'MoMoLogger', false);
 
 CaptureMoMo::process($env, $orderId, "Pay With MoMo", "35000", "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
 //QueryStatusTransaction::process($env, '1561972963', '1561972963');

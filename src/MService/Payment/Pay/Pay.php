@@ -1,7 +1,7 @@
 <?php
 
-//include_once "../../../loader.php";
-//include_once "../../../../vendor/autoload.php";
+include_once "../../../loader.php";
+include_once "../../../../vendor/autoload.php";
 
 use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
@@ -10,8 +10,8 @@ use MService\Payment\Pay\Processors\TransactionRefund;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 
-$env = new Environment("https://test-payment.momo.vn", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
-    'development');
+$env = new Environment("https://test-payment.momo.vn/pay/pos", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'),
+    'development', 'MoMoLogger', false);
 $publicKey = "-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
 40UoXhoQf9K6attSIclTZMEGfq6gmJm2BogVJtPkjvri5/j9mBntA8qKMzzanSQaBEbr8FyByHnf
