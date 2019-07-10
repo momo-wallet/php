@@ -1,5 +1,7 @@
 <?php
 
+//Sample Code -- please add the autoload yourself as appropriate 
+
 use MService\Payment\AllInOne\Processors\CaptureMoMo;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
