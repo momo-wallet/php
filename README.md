@@ -8,23 +8,27 @@ Library package to integrate MoMo E-Wallet as payment method
 ### Prerequisites
 - PHP >= 7.2
 - Composer 
-- phpseclib/phpseclib, at least version 2.0
 
-```    
-"require": {
-    "php": ">=7.2",
-    "phpseclib/phpseclib": "^2"
- },
-```
-
-For development purposes, we use phpunit/phpunit for testing, monolog/monolog for logging. 
+For development purposes, we use phpunit/phpunit for testing. 
 
 Please check the composer.json file for detailed information on libraries for development as well as suggested packages
 
 ### Installing
-Make sure you have the correct PHP version and Composer installed. 
-Then, simply clone the repo to your chosen IDEA and set up Composer and have the required packages. 
- 
+Make sure you have the correct PHP version and Composer installed. Then you can add the package from the command line:
+
+``` 
+composer require mservice/payment
+``` 
+
+Or you can add directly to the `composer.json` file and then run the command `composer update`:
+```
+require {
+    "mservice/payment":"*"
+}
+```
+
+Please remember to run `composer dump-autoload -o` to make sure the autolaod works properly. 
+
 ## Documention
 
 https://developers.momo.vn
@@ -61,7 +65,6 @@ Or you can directly add to ```composer.json```, and then update and dump-autoloa
 ```
 
 Run the tests with phpunit command
-
 
 ## Acknowledgments
 ### Security Aalgorithms

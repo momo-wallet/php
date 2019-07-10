@@ -20,14 +20,13 @@
     "require": {
 		"php": ">=7.2",
         "phpseclib/phpseclib": "^2",
-        "psr/log":"^1.0.1",
-        "monolog/monolog": "*"
+        "monolog/monolog": "*",
+        "bramus/monolog-colored-line-formatter": "3.0",
+        "ext-json":  "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^8",
-        "bramus/monolog-colored-line-formatter": "3.0",
-        "vlucas/phpdotenv": "*",
-        "ext-json":  "*"
+        "vlucas/phpdotenv": "*"
     },
     "autoload": {
         "psr-4": {
