@@ -1,8 +1,5 @@
 <?php
 
-include_once "../../../loader.php";
-include_once "../../../../vendor/autoload.php";
-
 use MService\Payment\Pay\Processors\POSPay;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
