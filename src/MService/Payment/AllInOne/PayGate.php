@@ -4,9 +4,6 @@ use MService\Payment\AllInOne\Processors\CaptureMoMo;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 
-include_once "../../../loader.php";
-include_once "../../../../vendor/autoload.php";
-
 $orderId = time() . "";
 $requestId = time() . "";
 
