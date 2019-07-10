@@ -46,7 +46,7 @@ class TransactionQuery extends Process
         );
 
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        $this->logger->info("[TransactionQueryRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+        $this->logger->debug("[TransactionQueryRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
             . ', [Signature] -> ' . $hash);
 
         $arr = array(
@@ -60,14 +60,14 @@ class TransactionQuery extends Process
         return new TransactionQueryRequest($arr);
     }
 
-    public function execute(TransactionQueryRequest $transactionQueryRequest)
+    public function execute($transactionQueryRequest)
     {
         try {
             $data = Converter::objectToJsonStrNoNull($transactionQueryRequest);
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
+                throw new MoMoException('[TransactionQueryRequest][' . $transactionQueryRequest->getOrderId() . '] -> ' . "Error API");
             }
 
             $transactionQueryResponse = new TransactionQueryResponse(json_decode($response->getBody(), true));

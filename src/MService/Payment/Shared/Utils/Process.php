@@ -3,16 +3,17 @@
 
 namespace MService\Payment\Shared\Utils;
 
+use MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger;
 use MService\Payment\Shared\SharedModels\Environment;
 
-class Process
+abstract class Process
 {
     protected $environment;
     protected $partnerInfo;
     protected $logger;
 
     /**
-     * AbstractProcess constructor.
+     * Process constructor.
      * @param $environment
      */
     public function __construct(Environment $environment)
@@ -22,15 +23,7 @@ class Process
         $this->logger = $environment->getLogger();
     }
 
-    public static function errorMoMoProcess($code)
-    {
-        switch ($code) {
-            case 0:
-                break;
-            case 1:
-                throw new MoMoException("Empty access key or partner code");
-        }
-    }
+    abstract protected function execute($request);
 
     /**
      * @return mixed
@@ -65,17 +58,17 @@ class Process
     }
 
     /**
-     * @return \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger
+     * @return MoMoLogger
      */
-    public function getLogger(): \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger
+    public function getLogger(): MoMoLogger
     {
         return $this->logger;
     }
 
     /**
-     * @param \MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger $logger
+     * @param MoMoLogger $logger
      */
-    public function setLogger(\MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger $logger): void
+    public function setLogger(MoMoLogger $logger): void
     {
         $this->logger = $logger;
     }

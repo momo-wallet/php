@@ -51,7 +51,7 @@ class AppPay extends Process
         );
 
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        $this->logger->info("[AppPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+        $this->logger->debug("[AppPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
             . ', [Signature] -> ' . $hash);
 
         $arr = array(
@@ -68,14 +68,14 @@ class AppPay extends Process
         return new AppPayRequest($arr);
     }
 
-    public function execute(AppPayRequest $appPayRequest)
+    public function execute($appPayRequest)
     {
         try {
             $data = Converter::objectToJsonStrNoNull($appPayRequest);
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
+                throw new MoMoException('[AppPayRequest][' . $appPayRequest->getOrderId() . '] -> Error API');
             }
 
             $appPayResponse = new AppPayResponse(json_decode($response->getBody(), true));
@@ -107,7 +107,7 @@ class AppPay extends Process
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            $this->logger->error($exception->getErrorMessage());
+            $this->logger->error('[AppPayResponse][' . $appPayResponse->getOrderId() . '] -> ' . $exception->getErrorMessage());
         }
         return null;
     }

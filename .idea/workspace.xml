@@ -2,26 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57725b12-2608-4b63-be74-8eb6a3e25f1f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/MoMoJson.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/MoMoJson.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/POSPayResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/POSPayResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/PayResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/PayResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/SampleEnvironment.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/SampleEnvironment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIORequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIORequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIORequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/AIORequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIOResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/AIOResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureIPNRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureIPNRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureMoMoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureMoMoResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/PayATMRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/PayATMRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/PayATMResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/PayATMResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/QueryStatusRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/QueryStatusRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/QueryStatusResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/QueryStatusResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundATMRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundATMRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundATMResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundATMResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundMoMoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundMoMoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundMoMoResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundMoMoResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundStatusRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundStatusRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundStatusResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundStatusResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/PayGate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureIPN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureMoMo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/PayATM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/QueryStatusTransaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundATM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundMoMo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Converter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Converter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/loader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureIPNTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureMoMoTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/PayATMTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/QueryStatusTransactionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/RefundATMTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/RefundMoMoTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundStatusTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/RefundStatusTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,64 +78,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-357">
-              <caret line="34" column="59" lean-forward="true" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="98" column="53" lean-forward="true" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-597">
-              <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-593">
-              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+            <state relative-caret-position="324">
+              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -103,8 +98,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="61" column="54" lean-forward="true" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+            <state relative-caret-position="203">
+              <caret line="49" column="104" selection-start-line="49" selection-start-column="104" selection-end-line="49" selection-end-column="104" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env.example">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="69" column="120" lean-forward="true" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="120" />
             </state>
           </provider>
         </entry>
@@ -112,32 +148,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+            <state relative-caret-position="242">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-            </state>
-          </provider>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>autoload</find>
-      <find>phpunit</find>
-      <find>PHPUNI</find>
-      <find>Sebastian Bergmann and contributors</find>
-      <find>jso</find>
-      <find>json_encode</find>
-      <find>&quot;\n&quot;;</find>
       <find>debug</find>
       <find>. &quot;\n&quot;</find>
       <find>echo</find>
@@ -145,7 +170,6 @@
       <find>, &quot;\n&quot;;</find>
       <find>HttpClie</find>
       <find>HttpClient</find>
-      <find>logger</find>
       <find>Seriali</find>
       <find>use MService\Payment\Shared\SharedModels\Process;</find>
       <find>require_once</find>
@@ -161,6 +185,14 @@
       <find>include</find>
       <find>require</find>
       <find>amount</find>
+      <find>PayGate</find>
+      <find>logger</find>
+      <find>errorMoMoProcess</find>
+      <find>execute</find>
+      <find>$captureIPNRequest</find>
+      <find>ERROR</find>
+      <find>error</find>
+      <find>getOrderId</find>
     </findStrings>
     <replaceStrings>
       <replace>namespace MoMo\Payment</replace>
@@ -189,10 +221,16 @@
       <replace>PROD</replace>
       <replace>'),</replace>
       <replace>$_ENV</replace>
+      <replace>AllInOne</replace>
+      <replace>$request</replace>
+      <replace>getMoMoTransId</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/tests/MService/Payment</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src/MService/Payment/AllInOne</dir>
+      <dir>$PROJECT_DIR$/tests</dir>
+      <dir>$PROJECT_DIR$/src/MService</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -201,35 +239,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/MService/Payment/Shared/SharedModels/EnvironmentTest.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Log.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoLog.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLog.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php" />
-        <option value="$PROJECT_DIR$/config/.env" />
-        <option value="$PROJECT_DIR$/config/social.php" />
-        <option value="$PROJECT_DIR$/src/.env.example" />
-        <option value="$PROJECT_DIR$/src/loader.php" />
-        <option value="$PROJECT_DIR$/src/config/environment.php" />
-        <option value="$PROJECT_DIR$/src/config/sampleSelectEnvironment.php" />
-        <option value="$PROJECT_DIR$/src/config/.env" />
-        <option value="$PROJECT_DIR$/src/config/.env.example" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php" />
-        <option value="$PROJECT_DIR$/LICENSE" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" />
-        <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/PayGate.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/config/SampleEnvironment.php" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/config/SampleEnvironment.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/MoMoJson.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayResponse.php" />
         <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php" />
@@ -247,11 +258,38 @@
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/.env.example" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureMoMoRequest.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/PayGate.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/AppPayTest.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureMoMoTest.php" />
+        <option value="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureIPNTest.php" />
+        <option value="$PROJECT_DIR$/config/SampleEnvironment.php" />
+        <option value="$PROJECT_DIR$/src/loader.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Converter.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureIPN.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureMoMo.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/PayATM.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/QueryStatusTransaction.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundATM.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundMoMo.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundStatus.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php" />
         <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php" />
-        <option value="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" />
+        <option value="$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -306,9 +344,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="165" />
+    <option name="x" value="71" />
     <option name="y" value="23" />
-    <option name="width" value="1755" />
+    <option name="width" value="1849" />
     <option name="height" value="971" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -319,6 +357,83 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Pay" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Pay" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Processors" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tests" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tests" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tests" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tests" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Pay" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -423,69 +538,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Pay" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Pay" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Processors" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="PayGate" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="payment" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PhpstormProjects/payment" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="MService" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Payment" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="PayGate" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Processors" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -510,16 +562,16 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/config" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels" />
-      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/Utils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/MService/Payment/MService/Payment" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/config" />
+      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels" />
+      <recent name="$PROJECT_DIR$/src/MService/Payment/Shared/Utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -534,34 +586,31 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
-    <configuration name="CaptureMoMoTest.testProcessSuccess" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\CaptureMoMoTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php" method="testProcessSuccess" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.Processors">
+    <configuration name="Processors (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors" />
       <method v="2" />
     </configuration>
-    <configuration name="PayATMTest.testCreatePayATMRequest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\PayATMTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php" method="testCreatePayATMRequest" scope="Method" />
+    <configuration name="Processors" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/tests/MService/Payment/Pay/Processors" />
       <method v="2" />
     </configuration>
-    <configuration name="RefundATMTest.testCreateRefundATMRequest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\RefundATMTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php" method="testCreateRefundATMRequest" scope="Method" />
+    <configuration name="PayGate.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/MService/Payment/AllInOne/PayGate.php">
       <method v="2" />
     </configuration>
-    <configuration name="RefundMoMoTest.testProcessFailure" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="MService\Payment\PayGate\Processors\RefundMoMoTest" file="$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php" method="testProcessFailure" scope="Method" />
+    <configuration name="Pay.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
       <method v="2" />
     </configuration>
-    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner directory="$PROJECT_DIR$/tests" />
+    <configuration name="SampleEnvironment.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/config/SampleEnvironment.php">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.RefundMoMoTest.testProcessFailure" />
-        <item itemvalue="PHPUnit.CaptureMoMoTest.testProcessSuccess" />
-        <item itemvalue="PHPUnit.RefundATMTest.testCreateRefundATMRequest" />
-        <item itemvalue="PHPUnit.PayATMTest.testCreatePayATMRequest" />
+        <item itemvalue="PHPUnit.Processors" />
+        <item itemvalue="PHP Script.Pay.php" />
+        <item itemvalue="PHPUnit.Processors (1)" />
+        <item itemvalue="PHP Script.PayGate.php" />
+        <item itemvalue="PHP Script.SampleEnvironment.php" />
       </list>
     </recent_temporary>
   </component>
@@ -601,44 +650,48 @@
       <workItem from="1562640032618" duration="61000" />
       <workItem from="1562640102773" duration="8065000" />
       <workItem from="1562653247978" duration="468000" />
-      <workItem from="1562664545181" duration="1452000" />
+      <workItem from="1562664545181" duration="1575000" />
+      <workItem from="1562666128541" duration="557000" />
+      <workItem from="1562666731065" duration="79000" />
+      <workItem from="1562669184827" duration="2497000" />
+      <workItem from="1562725563140" duration="1986000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RefundATMTest_testCreateRefundATMRequest - 2019.07.09 at 16h 44m 43s.xml">
-      <configuration name="RefundATMTest.testCreateRefundATMRequest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Processors_(1) - 2019.07.09 at 18h 25m 16s.xml">
+      <configuration name="Processors (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="CaptureMoMoTest_testProcessSuccess - 2019.07.09 at 16h 45m 00s.xml">
-      <configuration name="CaptureMoMoTest.testProcessSuccess" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="CaptureIPNTest_test__construct - 2019.07.09 at 18h 25m 41s.xml">
+      <configuration name="CaptureIPNTest.test__construct" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="CaptureMoMoTest_testProcessSuccess - 2019.07.09 at 16h 45m 13s.xml">
-      <configuration name="CaptureMoMoTest.testProcessSuccess" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="CaptureMoMoTest - 2019.07.09 at 18h 27m 13s.xml">
+      <configuration name="CaptureMoMoTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="CaptureMoMoTest_testProcessSuccess - 2019.07.09 at 16h 45m 24s.xml">
-      <configuration name="CaptureMoMoTest.testProcessSuccess" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Processors_(1) - 2019.07.09 at 18h 27m 35s.xml">
+      <configuration name="Processors (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.07.09 at 16h 46m 20s.xml">
+    <history-entry file="CaptureIPNTest_testMoMoRequestCorrect - 2019.07.09 at 18h 27m 52s.xml">
+      <configuration name="CaptureIPNTest.testMoMoRequestCorrect" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Processors_(1) - 2019.07.09 at 18h 27m 56s.xml">
+      <configuration name="Processors (1)" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tests - 2019.07.09 at 18h 28m 01s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.07.09 at 16h 46m 45s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Processors_(1) - 2019.07.10 at 09h 51m 48s.xml">
+      <configuration name="Processors (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.07.09 at 16h 51m 58s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Processors - 2019.07.10 at 09h 58m 00s.xml">
+      <configuration name="Processors" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="RefundMoMoTest_testProcessFailure - 2019.07.09 at 16h 52m 14s.xml">
-      <configuration name="RefundMoMoTest.testProcessFailure" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="RefundMoMoTest_testProcessFailure - 2019.07.09 at 16h 52m 21s.xml">
-      <configuration name="RefundMoMoTest.testProcessFailure" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2019.07.09 at 16h 53m 14s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Processors - 2019.07.10 at 09h 58m 44s.xml">
+      <configuration name="Processors" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89599000" />
+    <option name="totallyTimeSpent" value="94841000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,15 +703,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="165" y="23" width="1755" height="971" extended-state="0" />
+    <frame x="71" y="23" width="1849" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.262697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.18760376" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.2457971" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.25233644" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36098132" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36682242" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -666,7 +719,7 @@
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32827103" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.1635514" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31074765" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32943925" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -697,363 +750,358 @@
     <SUITE FILE_PATH="coverage/payment$tests.xml" NAME="tests Coverage Results" MODIFIED="1562314482733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionQueryTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1325">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/TransactionRefundTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureIPNTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="44" column="27" lean-forward="true" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/PayATMTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="37" column="75" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/QueryStatusTransactionTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-419">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundATMTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="35" column="74" lean-forward="true" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/CaptureMoMoTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/MoMoJson.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1071">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/PaymentConfirmationRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/PaymentConfirmationResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="41" lean-forward="true" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/PayRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/PayResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/POSPayRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/POSPayResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionQueryRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionQueryResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureIPNRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/TransactionRefundResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIORequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="104" column="29" lean-forward="true" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/AIOResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1291">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureIPNRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/CaptureMoMoResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureMoMoResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/PayATMRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/PayATMRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/PayATMResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/PayATMResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/QueryStatusRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/QueryStatusRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/QueryStatusResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/QueryStatusResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundATMRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundATMRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundATMResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundATMResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/CaptureMoMoRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundStatusRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundMoMoRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Models/RefundStatusResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundMoMoResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Constants/Parameter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Constants/RequestType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/Environment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/MoMoLogger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/PartnerClientInfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/SharedModels/PartnerInfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-154">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Converter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-130">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Encoder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/HttpResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/MoMoException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundStatusRequest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Shared/Utils/Process.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="145">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Models/RefundStatusResponse.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureIPN.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureIPN.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/CaptureMoMo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/PayATM.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-535">
-          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+        <state relative-caret-position="252">
+          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
           <folding>
-            <element signature="e#56#106#0#PHP" expanded="true" />
+            <element signature="e#56#111#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/QueryStatusTransaction.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/CaptureMoMo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="34" column="59" lean-forward="true" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+        <state relative-caret-position="-177">
+          <caret line="76" column="61" selection-start-line="76" selection-start-column="61" selection-end-line="76" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundATM.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/QueryStatusTransaction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
+        <state relative-caret-position="486">
+          <caret line="112" column="54" selection-start-line="112" selection-start-column="54" selection-end-line="112" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundMoMo.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundATM.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="98" column="53" lean-forward="true" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+        <state relative-caret-position="277">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/PayGate/Processors/RefundStatus.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundMoMo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-597">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+        <state relative-caret-position="410">
+          <caret line="110" column="105" selection-start-line="110" selection-start-column="105" selection-end-line="110" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/RefundStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/PayGate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureIPNTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+          <folding>
+            <element signature="e#56#111#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/CaptureMoMoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/PayATMTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/AllInOne/Processors/QueryStatusTransactionTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/AppPayResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/MoMoJson.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1240">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/PaymentConfirmationRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/AllInOne/Processors/PayATM.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="117" column="62" lean-forward="true" selection-start-line="117" selection-start-column="62" selection-end-line="117" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/AppPay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-593">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+        <state relative-caret-position="250">
+          <caret line="104" column="62" lean-forward="true" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/PaymentConfirmation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="341">
+          <caret line="105" column="55" lean-forward="true" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/POSPay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        <state relative-caret-position="324">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionQuery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="61" column="54" lean-forward="true" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+        <state relative-caret-position="345">
+          <caret line="69" column="120" lean-forward="true" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="120" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/TransactionRefund.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        <state relative-caret-position="242">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/PayGate/Processors/RefundMoMoTest.php">
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Pay.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MService/Payment/Pay/Processors/QRNotifyTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+        <state relative-caret-position="182">
+          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Processors/QRNotify.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="49" column="104" selection-start-line="49" selection-start-column="104" selection-end-line="49" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MService/Payment/Pay/Models/QRNotificationRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
         </state>
       </provider>
     </entry>

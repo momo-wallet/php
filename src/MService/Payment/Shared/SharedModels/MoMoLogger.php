@@ -11,7 +11,7 @@ class MoMoLogger extends Logger
 {
     protected $loggingOff;
 
-    public function __construct($name = 'MoMoDefault', bool $loggingOff = false, array $handlers = array(), array $processors = array())
+    public function __construct(string $name = 'MoMoDefault', bool $loggingOff = false, array $handlers = array(), array $processors = array())
     {
         $this->loggingOff = $loggingOff;
 

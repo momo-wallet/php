@@ -48,7 +48,7 @@ class TransactionRefund extends Process
         );
 
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        $this->logger->info("[TransactionRefundRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+        $this->logger->debug("[TransactionRefundRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
             . ', [Signature] -> ' . $hash);
 
         $arr = array(
@@ -61,14 +61,14 @@ class TransactionRefund extends Process
         return new TransactionRefundRequest($arr);
     }
 
-    public function execute(TransactionRefundRequest $transactionRefundRequest)
+    public function execute($transactionRefundRequest)
     {
         try {
             $data = Converter::objectToJsonStrNoNull($transactionRefundRequest);
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
+                throw new MoMoException('[TransactionRefundRequest][' . $transactionRefundRequest->getOrderId() . '] -> ' . "Error API");
             }
 
             $transactionRefundResponse = new TransactionRefundResponse(json_decode($response->getBody(), true));

@@ -3,10 +3,7 @@
 
 namespace MService\Payment\Shared\SharedModels;
 
-use Dotenv\Dotenv;
-use Monolog\Logger;
 use MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger;
-use MService\Payment\Shared\Utils\MoMoException;
 
 class Environment
 {
@@ -22,7 +19,7 @@ class Environment
      * @param $target
      *
      */
-    public function __construct($momoEndpoint, $partnerInfo, $target, $channelName = 'MoMoDefault', bool $loggingOff = true, array $handlers = array(), array $processors = array())
+    public function __construct($momoEndpoint, $partnerInfo, $target, string $channelName = 'MoMoDefault', bool $loggingOff = true, array $handlers = array(), array $processors = array())
     {
         $this->momoEndpoint = $momoEndpoint;
         $this->partnerInfo = $partnerInfo;

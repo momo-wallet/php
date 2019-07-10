@@ -49,7 +49,7 @@ class POSPay extends Process
         );
 
         $hash = Encoder::encryptRSA($jsonArr, $publicKey);
-        $this->logger->info("[POSPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
+        $this->logger->debug("[POSPayRequest] rawData: " . Converter::arrayToJsonStrNoNull($jsonArr)
             . ', [Signature] -> ' . $hash);
 
         $arr = array(
@@ -64,14 +64,14 @@ class POSPay extends Process
         return new POSPayRequest($arr);
     }
 
-    public function execute(POSPayRequest $posPayRequest)
+    public function execute($posPayRequest)
     {
         try {
             $data = Converter::objectToJsonStrNoNull($posPayRequest);
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
+                throw new MoMoException('[POSPayRequest][' . $posPayRequest->getOrderId() . '] -> Error API');
             }
 
             $posPayResponse = new POSPayResponse(json_decode($response->getBody(), true));

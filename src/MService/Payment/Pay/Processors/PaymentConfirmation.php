@@ -46,7 +46,7 @@ class PaymentConfirmation extends Process
             "&" . Parameter::MOMO_TRANS_ID . "=" . $momoTransId;
 
         $signature = Encoder::hashSha256($rawData, $this->getPartnerInfo()->getSecretKey());
-        $this->logger->info("[PayConfirmRequest] rawData: " . $rawData
+        $this->logger->debug("[PayConfirmRequest] rawData: " . $rawData
             . ', [Signature] -> ' . $signature);
 
         $arr = array(
@@ -63,14 +63,14 @@ class PaymentConfirmation extends Process
         return new PaymentConfirmationRequest($arr);
     }
 
-    public function execute(PaymentConfirmationRequest $paymentConfirmationRequest)
+    public function execute($paymentConfirmationRequest)
     {
         try {
             $data = Converter::objectToJsonStrNoNull($paymentConfirmationRequest);
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException("Error API");
+                throw new MoMoException('[PayConfirmRequest][' . $paymentConfirmationRequest->getOrderId() . '] -> Error API');
             }
 
             $paymentConfirmationResponse = new PaymentConfirmationResponse(json_decode($response->getBody(), true));
@@ -110,7 +110,7 @@ class PaymentConfirmation extends Process
             }
 
         } catch (MoMoException $exception) {
-            $this->logger->error($exception->getErrorMessage());
+            $this->logger->error('[PaymentConfirmationResponse][' . $paymentConfirmationResponse->getOrderId() . '] -> ' . $exception->getErrorMessage());
         }
         return null;
     }

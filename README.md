@@ -21,7 +21,7 @@ For development purposes, we use phpunit/phpunit for testing, monolog/monolog fo
 
 Please check the composer.json file for detailed information on libraries for development as well as suggested packages
 
-###Installing
+### Installing
 Make sure you have the correct PHP version and Composer installed. 
 Then, simply clone the repo to your chosen IDEA and set up Composer and have the required packages. 
  
@@ -29,24 +29,24 @@ Then, simply clone the repo to your chosen IDEA and set up Composer and have the
 
 https://developers.momo.vn
 
-##Usage 
+## Usage 
 
-###Setting Up MoMo Environment 
+### Setting Up MoMo Environment 
 MoMo provides 2 environments for integration: development(```dev```) and production(```prod```). 
 The model for environment is located at ```MService\Payment\Shared\SharedModels\Environment```
 
-Example configuration is provided in ```.env.example``` and sample code on how to set up your environment can be found in ```SampleEnvironment.php``` file
+Example configuration is provided in ```.env.example``` and sample code on how to set up your environment can be found in ```SampleEnvironment.php``` file. Please create your own `.env` file and then copy contents from `.env.example` to that file (or make any necessary changes). Please note that `selectEnvironment()` is just a sample code and NOT part of the actual library.
 
 By default, log is turned off. But you can use `MoMoLogger` by setting the `$loggingOff` property to `false` during environment setup. 
 
-###Integration 
+### Integration 
 The library provides functions to conduct transactions through the All-In-One (AIO) Payment Gateway (```Mservice\Payment\PayGate```) and all other Payment (```Mservice\Payment\Pay```) options (App-In-App, POS, Dynamic QR Code)
 
 For each payment options, you can choose to either use the provided code in ```Processors``` folder to immediately use MoMo services or extend from the models located in `Models` folder. To have a better sense of how the processors work, we recommend uncommented and run the code in ```PayGate.php``` and ```Pay.php``` 
 
 For `Pay.php`, please ensure that the URI you are calling to is correct for the processes you are trying to run accoring to [MoMo's documentation](https://developers.momo.vn/#/). 
 
-##Running The Tests
+## Running The Tests
 Install phpunit/phpunit library to the downloaded project:
 
 From the terminal, with Composer: 

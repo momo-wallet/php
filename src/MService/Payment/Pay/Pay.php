@@ -3,10 +3,7 @@
 include_once "../../../loader.php";
 include_once "../../../../vendor/autoload.php";
 
-use MService\Payment\Pay\Processors\PaymentConfirmation;
 use MService\Payment\Pay\Processors\POSPay;
-use MService\Payment\Pay\Processors\TransactionQuery;
-use MService\Payment\Pay\Processors\TransactionRefund;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 
@@ -24,10 +21,9 @@ $requestId = time() . "";
 $partnerRefId = time() . "";
 
 POSPay::process($env, 'MM587977818202493946', 50000, $publicKey, $partnerRefId, '', '', '');
+//uncomment to use PaymentConfirmation
 //PaymentConfirmation::process($env, '1562138427', "capture", "2305016460", $requestId);
-//
+
+//uncomment to use TransactionQuery and TransactionRefund
 //TransactionQuery::process($env, '1562138468', $publicKey, '1562138427');
 //TransactionRefund::process($env, $requestId, 10000, $publicKey, '1562138427', '2305016460');63342
-
-//disable log
-//laravel

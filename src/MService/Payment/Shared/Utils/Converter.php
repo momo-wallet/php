@@ -39,9 +39,10 @@ class Converter
 
     public static function objectToArray($object)
     {
-//        Object must be serializable
-//        $array = json_decode(json_encode($object), true);
-//        return $array;
+/*        Object must be serializable
+        $array = json_decode(json_encode($object), true);
+        return $array;
+*/
         $arr = [];
         try {
             $className = get_class($object);

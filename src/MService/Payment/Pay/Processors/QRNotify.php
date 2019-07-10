@@ -35,24 +35,25 @@ class QRNotify extends Process
             $payload = $qrNotify->execute($qrNotificationRequest);
         }
 
-        $qrNotify->logger->info('[QRNotifyResponse] -> ' . $payload);
+        $qrNotify->logger->debug('[QRNotifyResponse] -> ' . $payload);
         return $payload;
     }
 
     public function getQRNotificationFromMoMo(string $rawPostData)
     {
+
         try {
             $jsonArr = json_decode($rawPostData, true);
             $qrNotificationRequest = new QRNotificationRequest($jsonArr);
 
             if (RequestType::TRANS_TYPE_MOMO_WALLET != $qrNotificationRequest->getTransType()) {
-                throw new MoMoException("Wrong Order Type - Please contact MoMo");
+                throw new MoMoException('[$QRNotificationRequest][' . $qrNotificationRequest->getMoMoTransId() . '] -> ' ."Wrong Order Type - Please contact MoMo");
             }
             if ($this->getPartnerInfo()->getPartnerCode() != $qrNotificationRequest->getPartnerCode()) {
-                throw new MoMoException("Wrong PartnerCode - Please contact MoMo");
+                throw new MoMoException('[$QRNotificationRequest][' . $qrNotificationRequest->getMoMoTransId() . '] -> ' . "Wrong PartnerCode - Please contact MoMo");
             }
             if ($this->getPartnerInfo()->getAccessKey() != $qrNotificationRequest->getAccessKey()) {
-                throw new MoMoException("Wrong AccessKey - Please contact MoMo");
+                throw new MoMoException('[$QRNotificationRequest][' . $qrNotificationRequest->getMoMoTransId() . '] -> ' . "Wrong AccessKey - Please contact MoMo");
             }
 
             $rawHash = Parameter::ACCESS_KEY . "=" . $qrNotificationRequest->getAccessKey() .
@@ -68,7 +69,7 @@ class QRNotify extends Process
                 "&" . Parameter::TRANS_TYPE . "=" . $qrNotificationRequest->getTransType();
 
             $signature = Encoder::hashSha256($rawHash, $this->getPartnerInfo()->getSecretKey());
-            $this->logger->info("[QRNotify From MoMo] rawData: " . $rawHash
+            $this->logger->debug("[QRNotify From MoMo] rawData: " . $rawHash
                 . ', [Signature] -> ' . $signature
                 . ', [MoMoSignature] -> ' . $qrNotificationRequest->getSignature());
 
@@ -84,7 +85,7 @@ class QRNotify extends Process
         return null;
     }
 
-    public function execute(QRNotificationRequest $qrNotificationRequest): string
+    public function execute($qrNotificationRequest): string
     {
         //create signature
         $rawHash = Parameter::AMOUNT . "=" . $qrNotificationRequest->getAmount() .

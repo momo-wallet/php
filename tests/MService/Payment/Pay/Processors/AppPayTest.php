@@ -1,9 +1,8 @@
 <?php
 
-namespace MService\Payment\MService\Payment\Pay\Processors;
+namespace MService\Payment\Pay\Processors;
 
 use MService\Payment\Pay\Models\AppPayRequest;
-use MService\Payment\Pay\Processors\AppPay;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
 use MService\Payment\Shared\Utils\Converter;
