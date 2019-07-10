@@ -40,11 +40,12 @@ class MoMoLogger extends Logger
         $this->loggingOff = $loggingOff;
     }
 
-    public function addRecord($level, $message, array $context = array())
+    public function addRecord($level, $message, array $context = array()) : bool
     {
         if (!$this->loggingOff) {
             return parent::addRecord($level, $message, $context);
         }
+        return false;
     }
 
 }
