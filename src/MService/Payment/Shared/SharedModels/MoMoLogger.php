@@ -1,7 +1,7 @@
 <?php
 
 
-namespace MService\Payment\MService\Payment\Shared\SharedModels;
+namespace MService\Payment\Shared\SharedModels;
 
 use Bramus\Monolog\Formatter\ColoredLineFormatter;
 use Monolog\Handler\StreamHandler;

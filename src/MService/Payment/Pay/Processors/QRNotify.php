@@ -26,12 +26,12 @@ class QRNotify extends Process
 
         if (is_null($qrNotificationRequest)) {
             http_response_code(400);
-            header($_SERVER["SERVER_PROTOCOL"] . ' 400 Bad Request');
+            header(' 400 Bad Request');
             $payload = json_encode(array("message" => "Bad Request"));
 
         } else {
             http_response_code(200);
-            header($_SERVER["SERVER_PROTOCOL"] . ' 200 OK');
+            header( ' 200 OK');
             $payload = $qrNotify->execute($qrNotificationRequest);
         }
 
@@ -105,7 +105,7 @@ class QRNotify extends Process
             Parameter::SIGNATURE => $signature
         );
 
-        $payload = json_encode($arr);
+        $payload = json_encode($arr, JSON_UNESCAPED_UNICODE);
         return $payload;
     }
 

@@ -102,12 +102,12 @@ class AppPay extends Process
                 . ', [Signature] -> ' . $signature
                 . ', [MoMoSignature] -> ' . $appPayResponse->getSignature());
 
-            if ($signature == $appPayResponse->getSignature())
+            if ($appPayResponse->getSignature() == null || $signature == $appPayResponse->getSignature())
                 return $appPayResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            $this->logger->error('[AppPayResponse][' . $appPayResponse->getOrderId() . '] -> ' . $exception->getErrorMessage());
+            $this->logger->error('[AppPayResponse] -> ' . $exception->getErrorMessage());
         }
         return null;
     }

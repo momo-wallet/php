@@ -10,7 +10,9 @@ class TransactionQueryResponse extends PayResponse
     public function __construct(array $params = array())
     {
         parent::__construct($params);
-        $this->setData($params['data']);
+        if (array_key_exists('data', $params)) {
+            $this->setData($params['data']);
+        }
     }
 
     /**

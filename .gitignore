@@ -2,3 +2,5 @@ vendor
 .env
 .idea
 composer.lock
+.phpunit.result.cache
+phpunit.phar

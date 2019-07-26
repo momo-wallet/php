@@ -26,12 +26,12 @@ class CaptureIPN extends Process
 
         if (is_null($captureIPNRequest)) {
             http_response_code(400);
-            header($_SERVER["SERVER_PROTOCOL"] . ' 400 Bad Request');
+            header( ' 400 Bad Request');
             $payload = json_encode(array("message" => "Bad Request"));
 
         } else {
             http_response_code(200);
-            header($_SERVER["SERVER_PROTOCOL"] . ' 200 OK');
+            header( ' 200 OK');
             $payload = $captureIPN->execute($captureIPNRequest);
         }
 
@@ -118,7 +118,7 @@ class CaptureIPN extends Process
             Parameter::SIGNATURE => $request->getSignature(),
         );
 
-        $payload = json_encode($arr);
+        $payload = json_encode($arr, JSON_UNESCAPED_UNICODE);
         return $payload;
     }
 
