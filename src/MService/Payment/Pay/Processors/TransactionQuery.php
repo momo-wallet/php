@@ -67,7 +67,7 @@ class TransactionQuery extends Process
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException('[TransactionQueryRequest][' . $transactionQueryRequest->getOrderId() . '] -> ' . "Error API");
+                throw new MoMoException('[TransactionQueryRequest][' . $transactionQueryRequest->getPartnerRefId() . '] -> ' . "Error API");
             }
 
             $transactionQueryResponse = new TransactionQueryResponse(json_decode($response->getBody(), true));

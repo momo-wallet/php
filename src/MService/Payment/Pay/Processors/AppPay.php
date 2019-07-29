@@ -75,7 +75,7 @@ class AppPay extends Process
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException('[AppPayRequest][' . $appPayRequest->getOrderId() . '] -> Error API');
+                throw new MoMoException('[AppPayRequest][' . $appPayRequest->getPartnerRefId() . '] -> Error API');
             }
 
             $appPayResponse = new AppPayResponse(json_decode($response->getBody(), true));

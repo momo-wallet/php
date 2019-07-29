@@ -71,7 +71,7 @@ class POSPay extends Process
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException('[POSPayRequest][' . $posPayRequest->getOrderId() . '] -> Error API');
+                throw new MoMoException('[POSPayRequest][' . $posPayRequest->getMomoTransId() . '] -> Error API');
             }
 
             $posPayResponse = new POSPayResponse(json_decode($response->getBody(), true));
