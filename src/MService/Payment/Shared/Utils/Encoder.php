@@ -17,7 +17,7 @@ class Encoder
     public static function encryptRSA(array $rawData, $publicKey)
     {
 
-        $rawJson = json_encode($rawData);
+        $rawJson = json_encode($rawData, JSON_UNESCAPED_UNICODE);
 
         $rsa = new RSA();
         $rsa->loadKey($publicKey);

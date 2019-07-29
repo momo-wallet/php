@@ -57,14 +57,20 @@ From the terminal, with Composer:
 ```
 composer require-dev "phpunit/phpunit":"^8"
 ```
-Or you can directly add to ```composer.json```, and then update and dump-autoload the composer:
+Or you can directly add to ```composer.json```, and then update the composer:
 ```    
 "require-dev": {
     "phpunit/phpunit": "^8"
  },
 ```
 
-Run the tests with phpunit command
+In the PhpStorm Preferences window, go to `Languages & Framework / PHP / Test Frameworks` choose `use Composer autoload` to load your local PhpUnit library.   
+Do remember to run the `composer dump-autoload -o` command first to ensure proper run of Composer's autoload.
+Run the tests with phpunit command. For example, you can run the CaptureMoMoTest.php by using the command: 
+```$xslt
+./vendor/bin/phpunit tests/MService/Payment/AllInOne/Processors/CaptureMoMoTest.php
+```
+Or ```./vendor/bin/phpunit tests``` to run all available tests
 
 ## Acknowledgments
 ### Security Aalgorithms

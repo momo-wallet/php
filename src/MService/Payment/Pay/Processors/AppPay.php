@@ -21,8 +21,8 @@ class AppPay extends Process
         parent::__construct($environment);
     }
 
-    public static function process(Environment $env, int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
-                                   $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null)
+    public static function process(Environment $env, int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = '',
+                                   $partnerName = '', $partnerTransId = '', $storeId = '', $storeName = '')
     {
         $appPay = new AppPay($env);
 
@@ -36,8 +36,8 @@ class AppPay extends Process
         }
     }
 
-    public function createAppPayRequest(int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = null,
-                                        $partnerName = null, $partnerTransId = null, $storeId = null, $storeName = null): AppPayRequest
+    public function createAppPayRequest(int $amount, $appData, $publicKey, $customerNumber, $partnerRefId, $version = 2.0, $payType = 3, $description = '',
+                                        $partnerName = '', $partnerTransId = '', $storeId = '', $storeName = ''): AppPayRequest
     {
 
         $jsonArr = array(
@@ -75,7 +75,7 @@ class AppPay extends Process
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException('[AppPayRequest][' . $appPayRequest->getOrderId() . '] -> Error API');
+                throw new MoMoException('[AppPayRequest][' . $appPayRequest->getPartnerRefId() . '] -> Error API');
             }
 
             $appPayResponse = new AppPayResponse(json_decode($response->getBody(), true));
@@ -102,12 +102,12 @@ class AppPay extends Process
                 . ', [Signature] -> ' . $signature
                 . ', [MoMoSignature] -> ' . $appPayResponse->getSignature());
 
-            if ($signature == $appPayResponse->getSignature())
+            if ($appPayResponse->getSignature() == null || $signature == $appPayResponse->getSignature())
                 return $appPayResponse;
             else
                 throw new MoMoException("Wrong signature from MoMo side - please contact with us");
         } catch (MoMoException $exception) {
-            $this->logger->error('[AppPayResponse][' . $appPayResponse->getOrderId() . '] -> ' . $exception->getErrorMessage());
+            $this->logger->error('[AppPayResponse] -> ' . $exception->getErrorMessage());
         }
         return null;
     }

@@ -70,7 +70,7 @@ class PaymentConfirmation extends Process
             $response = HttpClient::HTTPPost($this->getEnvironment()->getMomoEndpoint(), $data, $this->getLogger());
 
             if ($response->getStatusCode() != 200) {
-                throw new MoMoException('[PayConfirmRequest][' . $paymentConfirmationRequest->getOrderId() . '] -> Error API');
+                throw new MoMoException('[PayConfirmRequest][' . $paymentConfirmationRequest->getMomoTransId() . '] -> Error API');
             }
 
             $paymentConfirmationResponse = new PaymentConfirmationResponse(json_decode($response->getBody(), true));
@@ -110,7 +110,7 @@ class PaymentConfirmation extends Process
             }
 
         } catch (MoMoException $exception) {
-            $this->logger->error('[PaymentConfirmationResponse][' . $paymentConfirmationResponse->getOrderId() . '] -> ' . $exception->getErrorMessage());
+            $this->logger->error('[PaymentConfirmationResponse][' . $paymentConfirmationResponse->getData()->getPartnerRefId() . '] -> ' . $exception->getErrorMessage());
         }
         return null;
     }

@@ -3,7 +3,7 @@
 
 namespace MService\Payment\Shared\Utils;
 
-use MService\Payment\MService\Payment\Shared\SharedModels\MoMoLogger;
+use MService\Payment\Shared\SharedModels\MoMoLogger;
 
 class HttpClient
 {

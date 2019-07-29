@@ -7,6 +7,7 @@
         "payment",
         "package"
     ],
+    "license": "MIT",
     "support": {
         "docs": "https://developers.momo.vn/"
     },
@@ -21,7 +22,7 @@
 		"php": ">=7.2",
         "phpseclib/phpseclib": "^2",
         "monolog/monolog": "*",
-        "bramus/monolog-colored-line-formatter": "3.0",
+        "bramus/monolog-colored-line-formatter": "^3.0",
         "ext-json":  "*"
     },
     "require-dev": {
