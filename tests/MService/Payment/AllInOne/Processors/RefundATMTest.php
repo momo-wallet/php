@@ -73,7 +73,5 @@ class RefundATMTest extends TestCase
 
         $this->assertEquals(6, $response->getErrorCode(), "Wrong Response Body from MoMo Server -- Wrong ErrorCode");
         $this->assertEquals('refundMoMoATM', $response->getRequestType(), "Wrong Response Body from MoMo Server -- Wrong RequestType");
-        $this->assertNotEmpty($response->getSignature(), "Wrong Response Body from MoMo Server -- Wrong Signature");
     }
-
 }
