@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MService\\Payment\\": "src/"
+            "MService\\Payment\\": "src/MService/Payment/"
         }
     },
     "minimum-stability": "dev",
